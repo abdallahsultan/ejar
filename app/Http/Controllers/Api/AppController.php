@@ -45,8 +45,8 @@ class AppController extends ApiBaseController
       
          $cars= CarsApiResource::collection(Car::where('status','True')->get());
         //  dd($cars);
-        $data=array(['Cars'=>$cars]);
-        return $this->sendResponse($data);
+        // $data=array(['Cars'=>$cars]);
+        return $this->sendResponse($cars);
         
     }
     
