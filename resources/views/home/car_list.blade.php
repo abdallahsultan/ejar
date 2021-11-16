@@ -55,8 +55,8 @@ $setting = \App\Http\Controllers\HomeController::getSetting();
         <div class="container">
             
             <div class="view-style-toggle-area" >
-                <button class="view-btn list-btn"><i style="color: #4c6aff;" class="fa fa-bars"></i></button>
-                <button class="view-btn grid-btn active"><i style="color: #4c6aff;" class="fa fa-th-large"></i></button>
+                <button class="view-btn list-btn"><i style="color: #e83231;" class="fa fa-bars"></i></button>
+                <button class="view-btn grid-btn active"><i style="color: #e83231;" class="fa fa-th-large"></i></button>
             </div>
             <div class="row mt-70">
                

@@ -33,7 +33,7 @@ $setting = \App\Http\Controllers\HomeController::getSetting();
                         </li>
                         <li>
                             <i class="fa fa-clock-o"></i>
-                            <p>السبت - الخميس 08:00 صباحًا - 5.00 مساءً</p>
+                            <p>خدمة 24 ساعة/ طوال أيام الأسبوع</p>
                         </li>
                     </ul>
                 </div>

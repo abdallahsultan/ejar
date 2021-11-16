@@ -61,7 +61,7 @@ $setting = \App\Http\Controllers\HomeController::getSetting();
                                 </div>
                             </div>
                             <div class="form-group">
-                                <textarea name="message" placeholder="Message"></textarea>
+                                <textarea name="message" placeholder="رسالة"></textarea>
                             </div>
                             <button type="submit" class="cmn-btn">أرسل الان</button>
                         </form>

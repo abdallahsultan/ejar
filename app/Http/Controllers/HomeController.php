@@ -133,7 +133,7 @@ class HomeController extends Controller
             'picked' => $picked,
             'page' => 'home'
         ];
-
+        // مجرد ماشوف كلمة view   يبقي هوا بيقولى روح لفايل 
         return view('home.index', $data);
     }
 

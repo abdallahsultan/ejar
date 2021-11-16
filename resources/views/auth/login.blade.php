@@ -48,13 +48,25 @@ $setting = \App\Http\Controllers\HomeController::getSetting();
               @csrf
               
                 <div class="frm-group">
-                  <input type="email" name="email" id="email" placeholder="البريد الألكترونى">
+                  <input class="@error('email') is-invalid @enderror" type="email" name="email" id="email" placeholder="البريد الألكترونى">
+                 
+                          @error('email')
+                <span class="invalid-feedback" style="display: block !important;" role="alert">
+														<strong>{{ $message }}</strong>
+													</span>
+												@enderror
                 </div>
               
+              
+              
                 <div class="frm-group">
-                  <input type="password" name="password" id="pass" placeholder="كلمة المرور">
+                  <input class="@error('password') is-invalid @enderror" type="password"  name="password" id="pass" placeholder="كلمة المرور">
                 </div>
-                
+                @error('password')
+													<span class="invalid-feedback"  style=" display: block !important;" role="alert">
+														<strong>{{ $message }}</strong>
+													</span>
+												@enderror
              
            
                 @if (Laravel\Jetstream\Jetstream::hasTermsAndPrivacyPolicyFeature())

@@ -20,6 +20,7 @@ Route::get('/asd', function () {
 Route::redirect('/anasayfa', 'home')->name('anasayfa');
 Route::redirect('/', 'home')->name('anasayfa');
 
+Route::get('/', [HomeController::class, 'index']);
 Route::get('/home', [HomeController::class, 'index']);
 
 

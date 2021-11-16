@@ -49,21 +49,34 @@ $setting = \App\Http\Controllers\HomeController::getSetting();
                 <div class="frm-group">
                   <input type="text" name="name" id="f-name" placeholder="ألاسم أو اللقب ">
                 </div>
-                
+                @error('name')
+                <span class="invalid-feedback" style="display: block !important;" role="alert">
+														<strong>{{ $message }}</strong>
+													</span>
+												@enderror
                 <div class="frm-group">
                   <input type="email" name="email" id="email" placeholder="البريد الألكترونى">
                 </div>
-              
+                @error('email')
+                <span class="invalid-feedback" style="display: block !important;" role="alert">
+														<strong>{{ $message }}</strong>
+													</span>
+												@enderror
                 <div class="frm-group">
                   <input type="password" name="password" id="pass" placeholder="كلمة المرور">
                 </div>
-                
+                @error('password')
+                <span class="invalid-feedback" style="display: block !important;" role="alert">
+														<strong>{{ $message }}</strong>
+													</span>
+												@enderror
                 <div class="frm-group">
                   <input type="password" name="password_confirmation" id="re-pass" placeholder="تأكيد كلمة المرور">
                 </div>
                 <div class="frm-group">
                  <select name="level" style="text-align: right;" >
                      <option value="user">مستخدم </option>
+                     <option value="renter"> مؤجر  شخصى</option>
                      <option value="office"> مكتب </option>
                  </select>
                 </div>

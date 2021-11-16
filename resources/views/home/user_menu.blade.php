@@ -7,9 +7,13 @@
     <ul class="cars-list">
         <li><a href="{{route('myprofile')}}">My Profile</a></li>
         <li><a href="{{route('myrents')}}">My Rents</a></li>
+        @if(Auth::user()->level == 'office' ||Auth::user()->level == 'renter')
+        <li><a href="{{route('myrents')}}">Add Car</a></li>
+        <li><a href="{{route('myrents')}}">All Cars</a></li>
+        @endif
         <li><a href="#0">My Messages</a></li>
         <li><a href="{{route('logout')}}">Logout</a></li>
-
+          
         @php
              $userRoles = Auth::user()->roles->pluck('name');
         @endphp

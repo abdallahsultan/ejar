@@ -2,6 +2,8 @@
 
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Route;
+use App\Http\Controllers\Api\AppController;
+use App\Http\Controllers\Api\AuthController;
 
 /*
 |--------------------------------------------------------------------------
@@ -16,4 +18,27 @@ use Illuminate\Support\Facades\Route;
 
 Route::middleware('auth:sanctum')->get('/user', function (Request $request) {
     return $request->user();
+});
+
+Route::group([
+
+    'middleware' => 'api',
+    'prefix' => 'Ejar'
+
+], function () {
+
+   
+    Route::post('login', [AuthController::class,'login']);
+    Route::post('register', [AuthController::class,'register']);
+    Route::post('logout', [AuthController::class,'logout']);
+    Route::post('refresh', [AuthController::class,'refresh']);
+    Route::post('me', [AuthController::class,'me']);
+    Route::post('payload', [AuthController::class,'payload']);
+    Route::get('home', [AppController::class,'home']);
+    // Route::post('myprofile', [AuthController::class,'myprofile']);
+    // Route::post('updateprofile', [AuthController::class,'updateprofile']);
+    // Route::post('changePassword', [AuthController::class,'changepassword']);
+    
+   
+
 });

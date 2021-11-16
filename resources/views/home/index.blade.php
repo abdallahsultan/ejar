@@ -2,6 +2,7 @@
 $setting = \App\Http\Controllers\HomeController::getSetting();
 
 @endphp
+<!-- اهم حته -->
 @extends('layouts.home')
 
 @section('title', $setting->title)
@@ -32,7 +33,7 @@ $setting = \App\Http\Controllers\HomeController::getSetting();
             <div class="row justify-content-center">
                 <div class="col-lg-6">
                     <div class="section-header text-center">
-                        <h2 class="section-title" style="color: #4c6aff">أحدث الإضافات</h2>
+                        <h2 class="section-title" style="color: #e83231">أحدث الإضافات</h2>
                     </div>
                 </div>
             </div>
@@ -48,9 +49,9 @@ $setting = \App\Http\Controllers\HomeController::getSetting();
                                 <div class="car-item-body">
                                     <div class="content">
                                         <h4 class="title">{{ $item->model }} {{ $item->brand }}</h4>
-                                        <span class="price">start form <span style="color: #4c6aff;font-weight:bold">
+                                        <span class="price">start form <span style="color: #e83231;font-weight:bold">
                                                 ريال سعودى{{ $item->price }} </span> per day</span>
-                                        <p>Aliquam sollicitudin dolores tristiquvel ornare, vitae aenean.</p>
+                                        <!-- <p>Aliquam sollicitudin dolores tristiquvel ornare, vitae aenean.</p> -->
                                         <a href="{{ route('cardetail', ['id' => $item->id, 'slug' => $item->slug]) }}"
                                             class="cmn-btn">rent car</a>
                                     </div>
@@ -94,9 +95,9 @@ $setting = \App\Http\Controllers\HomeController::getSetting();
             <div class="row mb-none-30">
                 <div class="col-lg-4 col-sm-6">
                     <div class="icon-item text-center">
-                        <div class="icon"><i class="fa fa-user"></i></div>
+                        <div class="icon"><i class="fa fa-car"></i></div>
                         <div class="content">
-                            <h4 class="title">سائقين خبراء</h4>
+                            <h4 class="title">أفضل السيارات</h4>
                            
                         </div>
                     </div>
@@ -160,76 +161,7 @@ $setting = \App\Http\Controllers\HomeController::getSetting();
 
     
 
-    <!-- team-section start -->
-    <section class="team-section pb-120 ">
-        <div class="container">
-            <div class="row justify-content-center">
-                <div class="col-lg-6">
-                    <div class="section-header text-center">
-                        <h2 class="section-title">فريق العمل</h2>
-                   
-                    </div>
-                </div>
-            </div>
-            <div class="row mb-none-30">
-                <div class="col-lg-4 col-sm-6">
-                    <div class="team-item">
-                        <div class="thumb">
-                            <img src="assets/images/team/1.jpg" alt="image">
-                            <div class="content">
-                                <h3 class="name">William cook</h3>
-                                <span class="designation">Support Manager</span>
-                                <ul class="social-list d-flex justify-content-center">
-                                    <li><a href="#0"><i class="fa fa-facebook"></i></a></li>
-                                    <li><a href="#0"><i class="fa fa-pinterest-p"></i></a></li>
-                                    <li><a href="#0"><i class="fa fa-twitter"></i></a></li>
-                                    <li><a href="#0"><i class="fa fa-vimeo"></i></a></li>
-                                </ul>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-                <!--team-item end -->
-                <div class="col-lg-4 col-sm-6">
-                    <div class="team-item">
-                        <div class="thumb">
-                            <img src="assets/images/team/2.jpg" alt="image">
-                            <div class="content">
-                                <h3 class="name">William cook</h3>
-                                <span class="designation">Support Manager</span>
-                                <ul class="social-list d-flex justify-content-center">
-                                    <li><a href="#0"><i class="fa fa-facebook"></i></a></li>
-                                    <li><a href="#0"><i class="fa fa-pinterest-p"></i></a></li>
-                                    <li><a href="#0"><i class="fa fa-twitter"></i></a></li>
-                                    <li><a href="#0"><i class="fa fa-vimeo"></i></a></li>
-                                </ul>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-                <!--team-item end -->
-                <div class="col-lg-4 col-sm-6">
-                    <div class="team-item">
-                        <div class="thumb">
-                            <img src="assets/images/team/3.jpg" alt="image">
-                            <div class="content">
-                                <h3 class="name">William cook</h3>
-                                <span class="designation">Support Manager</span>
-                                <ul class="social-list d-flex justify-content-center">
-                                    <li><a href="#0"><i class="fa fa-facebook"></i></a></li>
-                                    <li><a href="#0"><i class="fa fa-pinterest-p"></i></a></li>
-                                    <li><a href="#0"><i class="fa fa-twitter"></i></a></li>
-                                    <li><a href="#0"><i class="fa fa-vimeo"></i></a></li>
-                                </ul>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-                <!--team-item end -->
-            </div>
-        </div>
-    </section>
-    <!-- team-section end -->
+ 
 
    
 

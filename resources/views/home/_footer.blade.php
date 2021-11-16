@@ -10,7 +10,7 @@
                 <div class="col-lg-4 col-sm-8">
                     <div class="footer-widget widget-about">
                         <div class="widget-about-content">
-                            <a href="index.html" class="footer-logo"><img src="{{asset('assets')}}/images/logo-footer.png"
+                            <a href="index.html" class="footer-logo"><img style="    border: 1px solid red;border-radius: 100%;" src="{{asset('assets')}}/images/logo-footer.png"
                                     alt="logo"></a>
                             <p>ايجار ذو فرص واعدة ويستحق المجازفة نظر ا للطب الكبير في السوق، وللدعم
 الحكومي مع قلة المنافسين في هذا المجال (خصوص  أنه  يتميز عن المنافسين
