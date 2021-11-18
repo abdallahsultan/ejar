@@ -145,16 +145,12 @@ class AuthController extends ApiBaseController
     }
     
     public function myprofile(){
-        $user['name']=auth('api')->user()->name;
-        $user['phone']=auth('api')->user()->phone;
-        $user['email']=auth('api')->user()->email;
-        $user['address']=auth('api')->user()->address;
-        $user['level']=auth('api')->user()->level;
-        // if($user['level'] == 'pharmacy'){
-
-        //   $user['guild_file']=auth('api')->user()->getguildfile();
-        // }
-        // $user['tax_file']=auth('api')->user()->gettaxfile();
+        $user['name']     =auth('api')->user()->name;
+        $user['phone']    =auth('api')->user()->phone;
+        $user['email']    =auth('api')->user()->email;
+        $user['address']  =auth('api')->user()->address;
+        $user['level']    =auth('api')->user()->level;
+        
         return $this->sendResponse($user);
         // dd($user);
     }
@@ -190,7 +186,7 @@ class AuthController extends ApiBaseController
             'address' => 'required',
         ]);
         if ($validator->fails()) {
-            return $this->sendResponse($validator->errors());
+            return $this->sendErrorMessage($validator->errors());
         }
       
           $update=User::find($id)->update([

@@ -35,9 +35,7 @@ Route::group([
     Route::post('me', [AuthController::class,'me']);
     Route::post('payload', [AuthController::class,'payload']);
     Route::get('home', [AppController::class,'home']);
-    // Route::post('myprofile', [AuthController::class,'myprofile']);
-    // Route::post('updateprofile', [AuthController::class,'updateprofile']);
-    // Route::post('changePassword', [AuthController::class,'changepassword']);
+
     
    
 
