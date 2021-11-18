@@ -83,10 +83,9 @@ class AuthController extends ApiBaseController
            
             $authorize=$this->respondWithToken($token);
             $authorize->original['user']=auth('api')->user();
-            return $this->sendResponse($authorize->original);
+            // return $this->sendResponse($authorize->original);
         }else{
-            return $this->sendErrorMessage('try again');
-           
+            return $this->sendErrorMessage('try again');     
             
         }
 
