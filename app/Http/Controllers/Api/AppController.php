@@ -40,8 +40,6 @@ class AppController extends ApiBaseController
      */
     public function home()
     {    
-       
-        
       
          $cars= CarsApiResource::collection(Car::where('status','True')->get());
         
@@ -119,7 +117,7 @@ class AppController extends ApiBaseController
         }
         $data=$request->all();
         
-        $id=auth('api')->user()->id;
+        $id=auth()->user()->id;
         $favorit=Favorite::where('user_id',$id)->where('product_id',$data['product_id'])->latest()->first();
         if(!$favorit){
             $data['user_id']=$id;
@@ -212,7 +210,7 @@ class AppController extends ApiBaseController
         }
         $data=$request->all();
         
-        $id=auth('api')->user()->id;
+        $id=auth()->user()->id;
         $CArt=Cart::where('user_id',$id)->where('product_id',$data['product_id'])->latest()->first();
         if(!$CArt){
             $data['user_id']=$id;

@@ -36,17 +36,17 @@ class AuthController extends ApiBaseController
     public function login(Request $request)
     {
         $validator = Validator::make($request->all(), [
-            'email' => 'required|email',
+            'phone' => 'required|numeric',
             'password' => 'required|string|min:6',
         ]);
         if ($validator->fails()) {
-            return response()->json($validator->errors(), 422);
+         return $this->sendErrorMessage($validator->errors());
         }
         if (! $token = auth('api')->attempt($validator->validated())) {
-            return response()->json(['error' => 'Check your Password or Email'], 401);
+            
+            $this->sendErrorMessage('Check your Password or Email');
+           
         }
-      
-        
         
         $authorize=$this->respondWithToken($token);
         $authorize->original['user']=auth('api')->user();
@@ -66,7 +66,7 @@ class AuthController extends ApiBaseController
             'sex' => 'required',
         ]);
         if ($validator->fails()) {
-            return $this->sendResponse($validator->errors());
+            return $this->sendErrorMessage($validator->errors());
         }
         
         $data['password'] = bcrypt($data['password']);
@@ -77,7 +77,8 @@ class AuthController extends ApiBaseController
             $credentials = request(['phone', 'password']);
          
             if (! $token = auth('api')->attempt($credentials)) {
-                return response()->json(['error' => 'Unauthorized'], 401);
+                return  $this->sendErrorMessage('Unauthorized');
+               
             }
            
             $authorize=$this->respondWithToken($token);
@@ -99,7 +100,7 @@ class AuthController extends ApiBaseController
      */
     public function me()
     {
-        return response()->json(auth('api')->user());
+        return $this->sendResponse(auth('api')->user());
     }
 
     /**
@@ -111,7 +112,7 @@ class AuthController extends ApiBaseController
     {
         auth('api')->logout();
 
-        return response()->json(['message' => 'Successfully logged out']);
+        return $this->sendResponse(['message' => 'Successfully logged out']);
     }
 
     /**
@@ -121,7 +122,7 @@ class AuthController extends ApiBaseController
      */
     public function refresh()
     {
-        return $this->respondWithToken(auth('api')->refresh());
+        return  $this->respondWithToken(auth('api')->refresh());
     }
 
     /**

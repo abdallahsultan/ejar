@@ -11,20 +11,20 @@ use Illuminate\Foundation\Auth\Access\AuthorizesRequests;
 
 class ApiBaseController extends BaseController
 {
-    public function sendResponse($result, $code = 200)
+    public function sendResponse($result, $code = 200 ,$error='')
     {
-        return response()->json($result, $code);
+        return response()->json([ "status" => true,"errors" => $error,"data"=>$result], $code);
     }
 
     public function sendErrorMessage($errorMessage, $code = 400)
     {
-        return response()->json(["errors" => $errorMessage, "message" => "failed"], $code);
+        return response()->json(["status" => false,"errors" => $errorMessage,"data"=> ''], $code);
     }
 
     public function sendError($errors, $code = 400)
     {
      
-        return response()->json(["message" => "failed", "errors" => $errors[0]], $code);
+        return response()->json(["status" => false, "errors" => $errors[0] ,"data"=> ''], $code);
     }
 
     public function sendSuccessMessage($message = "Success")
