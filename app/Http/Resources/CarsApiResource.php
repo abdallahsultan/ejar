@@ -21,6 +21,8 @@ class CarsApiResource extends JsonResource
             'user_id'         => $this->user_id,
             'user_name'       => $this->user->name,
             'image'           => $this->path,
+            'address'         => $this->address,
+            'phone'          => $this->phone,
             'detail'          => $this->detail,
             'brand'           => $this->brand,
             'model'           => $this->model,
