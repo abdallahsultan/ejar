@@ -44,7 +44,7 @@ class AuthController extends ApiBaseController
         }
         if (! $token = auth('api')->attempt($validator->validated())) {
             
-            $this->sendErrorMessage('Check your Password or Email');
+         return   $this->sendErrorMessage('Check your Password or Email');
            
         }
         
@@ -61,7 +61,7 @@ class AuthController extends ApiBaseController
         $validator = Validator::make($request->all(), [
             'name' => 'required',
             'password' => 'required|min:6',
-            'phone' => 'required|min:11|numeric|unique:users,phone,',
+            'phone' => 'required|min:10|numeric|unique:users,phone,',
             'email' => 'required|max:255|unique:users,email,',
             'sex' => 'required',
         ]);
@@ -77,13 +77,13 @@ class AuthController extends ApiBaseController
             $credentials = request(['phone', 'password']);
          
             if (! $token = auth('api')->attempt($credentials)) {
-                return  $this->sendErrorMessage('Unauthorized');
+                return  $this->sendErrorMessage('Check your Password or Email');
                
             }
            
             $authorize=$this->respondWithToken($token);
             $authorize->original['user']=auth('api')->user();
-            // return $this->sendResponse($authorize->original);
+            return $this->sendResponse($authorize->original);
         }else{
             return $this->sendErrorMessage('try again');     
             
@@ -181,7 +181,7 @@ class AuthController extends ApiBaseController
     {   $id=auth('api')->user()->id;
         $validator = Validator::make($request->all(), [
             'name' => 'required',
-            'phone' => 'required|min:11|numeric|unique:users,phone,'.$id,
+            'phone' => 'required|min:10|numeric|unique:users,phone,'.$id,
             'email' => 'required|max:255|unique:users,email,'.$id,
             'address' => 'required',
         ]);
