@@ -2,18 +2,21 @@
 
 namespace App\Http\Controllers\Api;
 
+use File;
+use App\Models\Car;
 use App\Models\User;
 use Illuminate\Http\Request;
 use App\Http\Requests\AdminRequest;
 use App\Http\Controllers\Controller;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Hash;
+use App\Http\Resources\CarsApiResource;
 use Illuminate\Support\Facades\Validator;
 use App\Http\Controllers\ApiBaseController;
 use App\Http\Requests\CustomerStockRequest;
-use App\Http\Requests\CustomerPharmacyRequest;
 use Symfony\Component\VarDumper\Cloner\Data;
-use File;
+use App\Http\Requests\CustomerPharmacyRequest;
+
 class AuthController extends ApiBaseController
 {
     /**
@@ -154,6 +157,14 @@ class AuthController extends ApiBaseController
         return $this->sendResponse($user);
         // dd($user);
     }
+    public function home()
+    {    
+      
+         $cars= CarsApiResource::collection(Car::where('status','True')->get());
+        
+        return $this->sendResponse($cars);
+        
+    }
 
     public function changepassword(Request $request){
           
@@ -162,7 +173,7 @@ class AuthController extends ApiBaseController
             'password' => 'min:6|required_with:password_confirmation|same:password_confirmation',
         ]);
         if (!(Hash::check($request->old_password, auth('api')->user()->password))) {
-            return response()->json(['errors' => ["Your current password can't be with new password"]], 400);
+            return $this->sendErrorMessage("Your current password can't be with new password");
         }
         if ($validator->fails()) {
             return $this->sendResponse($validator->errors());
@@ -181,17 +192,17 @@ class AuthController extends ApiBaseController
     {   $id=auth('api')->user()->id;
         $validator = Validator::make($request->all(), [
             'name' => 'required',
-            'phone' => 'required|min:10|numeric|unique:users,phone,'.$id,
             'email' => 'required|max:255|unique:users,email,'.$id,
-            'address' => 'required',
+            'sex' => 'required',
+            // 'address' => 'required',
         ]);
         if ($validator->fails()) {
             return $this->sendErrorMessage($validator->errors());
         }
       
           $update=User::find($id)->update([
-              'name'=>$request->name ,'phone'=>$request->phone,
-              'email'=>$request->email,'address'=>$request->address]);
+              'name'=>$request->name ,'sex'=>$request->sex,
+              'email'=>$request->email]);
 
             if($update){
                return $this->sendSuccessMessage('Your Profile Updated  Successfull');
@@ -201,5 +212,27 @@ class AuthController extends ApiBaseController
 
 
      }
+     public function searchCar(Request $request)
+     {
+         $search=$request->serachKey;
+        
+         $cars= CarsApiResource::collection(Car::where('status','True')->where('title', 'like', "%{$search}%")
+         ->OrWhere('description', 'like', "%{$search}%")
+         ->OrWhere('brand', 'like', "%{$search}%")
+         ->OrWhere('model', 'like', "%{$search}%")
+         ->OrWhere('keywords', 'like', "%{$search}%")->get());
+        
+       
+ 
+        if($cars){
+            $data['cars']=$cars;
+          
+         return $this->sendResponse($data);
+        }else{
+            return $this->sendErrorMessage('Some thing is error ');
+        }
+ 
+     }
+    
   
 }

@@ -34,7 +34,10 @@ Route::group([
     Route::post('refresh', [AuthController::class,'refresh']);
     Route::post('me', [AuthController::class,'me']);
     Route::post('payload', [AuthController::class,'payload']);
-    Route::get('home', [AppController::class,'home']);
+    Route::get('home', [AuthController::class,'home']);
+    Route::post('changePassword', [AuthController::class,'changepassword']);
+    Route::post('shearchCar', [AuthController::class,'searchCar']);
+    Route::post('updateprofile', [AuthController::class,'updateprofile']);
 
     
    
