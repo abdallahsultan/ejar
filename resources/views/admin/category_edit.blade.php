@@ -53,25 +53,25 @@
                             <div class="form-group row">
                                 <label for="fname" class="col-sm-2 text-right control-label col-form-label">Title</label>
                                 <div class="col-sm-9">
-                                    <input value="{{$data->title}}" type="text" name="title" class="form-control" id="title" placeholder="Title Here">
+                                    <input required value="{{$data->title}}" type="text" name="title" class="form-control" id="title" placeholder="Title Here">
                                 </div>
                             </div>
                             <div class="form-group row">
                                 <label for="lname" class="col-sm-2 text-right control-label col-form-label">Keywords</label>
                                 <div class="col-sm-9">
-                                    <input value="{{$data->keywords}}" type="text" name="keywords" class="form-control" id="keywords" placeholder="Keywords Here">
+                                    <input required value="{{$data->keywords}}" type="text" name="keywords" class="form-control" id="keywords" placeholder="Keywords Here">
                                 </div>
                             </div>
                             <div class="form-group row">
                                 <label for="lname" class="col-sm-2 text-right control-label col-form-label">Description</label>
                                 <div class="col-sm-9">
-                                    <input value="{{$data->description}}" type="text" name="description" class="form-control" id="description" placeholder="Description Here">
+                                    <input required value="{{$data->description}}" type="text" name="description" class="form-control" id="description" placeholder="Description Here">
                                 </div>
                             </div>
                             <div class="form-group row">
                                 <label for="lname" class="col-sm-2 text-right control-label col-form-label">Slug</label>
                                 <div class="col-sm-9">
-                                    <input value="{{$data->slug}}" type="text" name="slug" class="form-control" id="slug" placeholder="Slug Here">
+                                    <input required value="{{$data->slug}}" type="text" name="slug" class="form-control" id="slug" placeholder="Slug Here">
                                 </div>
                             </div>
 

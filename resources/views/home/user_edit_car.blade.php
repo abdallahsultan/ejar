@@ -1,34 +1,34 @@
-@extends('layouts.admin')
+@php
+$setting = \App\Http\Controllers\HomeController::getSetting();
+@endphp
 
-@section('title', 'Edit Car')
+@extends('layouts.home')
 
-@section('javascript')
-    <script src="{{ asset('assets') }}/js/ckeditor/ckeditor.js"></script>
+@section('title', $setting->title)
+
+@section('description')
+{{ $setting->description }}
 @endsection
-@section('content')
-    <!-- ============================================================== -->
-    <!-- Page wrapper  -->
-    <!-- ============================================================== -->
-    <div style="background-color: white" class="page-wrapper">
-        <!-- ============================================================== -->
-        <!-- Bread crumb and right sidebar toggle -->
-        <!-- ============================================================== -->
-        <div class="page-breadcrumb">
-            <div class="row">
-                <div class="col-12 d-flex no-block align-items-center">
 
-                    <div class="ml-auto text-right">
-                        <nav aria-label="breadcrumb">
-                            <ol class="breadcrumb">
-                                <li class="breadcrumb-item"><a href="#">Home</a></li>
-                                <li class="breadcrumb-item active" aria-current="page">Edit Car</li>
-                            </ol>
-                        </nav>
+@section('keywords', $setting->keywords)
+
+@section('content')
+
+@include('home.message')
+<section class="reservation-section pt-120 pb-120">
+    <div class="container">
+        <div class="row">
+            <div class="col-lg-4">
+                <aside class="sidebar">
+                    @include('home.user_menu')
+                    <div class="widget widget-testimonial">
+
                     </div>
-                </div>
+                    <!-- widget end -->
+                </aside>
             </div>
-        </div>
-        <div class="container">
+            <div class="col-lg-8">
+
             <div class="card">
                 <div class="card-header border">
                     <h3 class="card-title">Edit Car</h3>
@@ -36,7 +36,7 @@
 
                 <div class="card-body border">
                     <div class="card">
-                        <form class="form-horizontal" action="{{ route('admin_car_update', ['id' => $data->id]) }}"
+                        <form class="form-horizontal" action="{{ route('use_car_update', ['id' => $data->id]) }}"
                             method="POST" enctype="multipart/form-data">
                             @csrf
                             <div class="card-body">
@@ -44,10 +44,7 @@
                                 <div class="form-group row" data-select2-id="12">
                                     <label class="col-sm-2 text-right control-label col-form-label">Category</label>
                                     <div class="col-md-9" data-select2-id="11">
-                                        <select required name="category_id"
-                                            class="select2 form-control custom-select select2-hidden-accessible"
-                                            style="width: 100%; height:36px;" data-select2-id="1" tabindex="-1"
-                                            aria-hidden="true">
+                                        <select required name="category_id">
                                             <option value="0" data-select2-id="3">Select Category</option>
                                             @foreach ($dataList as $rs)
                                                 <option value="{{ $rs->id }}" @if ($rs->id == $data->category_id) selected="selected"@endif 
@@ -191,10 +188,7 @@
                                 <div class="form-group row" data-select2-id="12">
                                     <label class="col-sm-2 text-right control-label col-form-label">Status</label>
                                     <div class="col-md-9" data-select2-id="11">
-                                        <select required value="{{ $data->status }}" name="status"
-                                            class="select2 form-control custom-select select2-hidden-accessible"
-                                            style="width: 100%; height:36px;" data-select2-id="1" tabindex="-1"
-                                            aria-hidden="true">
+                                        <select required value="{{ $data->status }}" name="status">
                                             <option data-select2-id="3" @if($data->status =='False') selected="selected" @endif >False</option>
                                         <option value="True" @if($data->status =='True') selected="selected" @endif data-select2-id="17" >True</option>
                                         </select>
@@ -205,7 +199,8 @@
                                     <label for="lname"
                                         class="col-sm-2 text-right control-label col-form-label">Image</label>
                                     <div class="col-sm-9">
-                                        <input required type="file" name="image" class="form-control" id="image">
+                                        <input  type="file" name="image"  id="image">
+                                        <br>
                                         @if ($data->image)
                                             <img src="{{ Storage::url($data->image) }}" style="height: 150px;" alt="">
                                         @endif
@@ -216,53 +211,22 @@
 
                             </div>
                             <div class="border-top">
-                                <div class="col-sm-2 text-right control-label col-form-label card-body">
-                                    <button type="submit" class="btn btn-primary">Edit Car</button>
+                                <div class="col-sm-4 text-right control-label col-form-label card-body">
+                                    <button type="submit" class="btn btn-primary">تعديل السيارة</button>
                                 </div>
                             </div>
                         </form>
                     </div>
                 </div>
 
-                <div class="card-footer border">Footer
+                <div class="card-footer border">
 
                 </div>
             </div>
+            </div>
         </div>
-
-
-
     </div>
-@endsection
+</section>
 
 
-
-@section('footer')
-    <!-- ============================================================== -->
-    <!-- All Jquery -->
-    <!-- ============================================================== -->
-    <script src="{{ asset('assets') }}/admin/assets/libs/jquery/dist/jquery.min.js"></script>
-    <!-- Bootstrap tether Core JavaScript -->
-    <script src="{{ asset('assets') }}/admin/assets/libs/popper.js/dist/umd/popper.min.js"></script>
-    <script src="{{ asset('assets') }}/admin/assets/libs/bootstrap/dist/js/bootstrap.min.js"></script>
-    <!-- slimscrollbar scrollbar JavaScript -->
-    <script src="{{ asset('assets') }}/admin/assets/libs/perfect-scrollbar/dist/perfect-scrollbar.jquery.min.js"></script>
-    <script src="{{ asset('assets') }}/admin/assets/extra-libs/sparkline/sparkline.js"></script>
-    <!--Wave Effects -->
-    <script src="{{ asset('assets') }}/admin/dist/js/waves.js"></script>
-    <!--Menu sidebar -->
-    <script src="{{ asset('assets') }}/admin/dist/js/sidebarmenu.js"></script>
-    <!--Custom JavaScript -->
-    <script src="{{ asset('assets') }}/admin/dist/js/custom.min.js"></script>
-    <!-- this page js -->
-    <script src="{{ asset('assets') }}/admin/assets/extra-libs/multicheck/datatable-checkbox-init.js"></script>
-    <script src="{{ asset('assets') }}/admin/assets/extra-libs/multicheck/jquery.multicheck.js"></script>
-    <script src="{{ asset('assets') }}/admin/assets/extra-libs/DataTables/datatables.min.js"></script>
-    <script>
-        /****************************************
-         *       Basic Table                   *
-         ****************************************/
-        $('#zero_config').DataTable();
-
-    </script>
 @endsection

@@ -225,9 +225,9 @@ class AuthController extends ApiBaseController
        
  
         if($cars){
-            $data['cars']=$cars;
+         
           
-         return $this->sendResponse($data);
+         return $this->sendResponse($cars);
         }else{
             return $this->sendErrorMessage('Some thing is error ');
         }

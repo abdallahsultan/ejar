@@ -52,25 +52,25 @@
                             <div class="form-group row">
                                 <label for="fname" class="col-sm-2 text-right control-label col-form-label">Title</label>
                                 <div class="col-sm-9">
-                                    <input type="text" name="title" class="form-control" id="title" placeholder="Title Here">
+                                    <input required type="text" name="title" class="form-control" id="title" placeholder="Title Here">
                                 </div>
                             </div>
                             <div class="form-group row">
                                 <label for="lname" class="col-sm-2 text-right control-label col-form-label">Keywords</label>
                                 <div class="col-sm-9">
-                                    <input type="text" name="keywords" class="form-control" id="keywords" placeholder="Keywords Here">
+                                    <input required type="text" name="keywords" class="form-control" id="keywords" placeholder="Keywords Here">
                                 </div>
                             </div>
                             <div class="form-group row">
                                 <label for="lname" class="col-sm-2 text-right control-label col-form-label">Description</label>
                                 <div class="col-sm-9">
-                                    <input type="text" name="description" class="form-control" id="description" placeholder="Description Here">
+                                    <input required type="text" name="description" class="form-control" id="description" placeholder="Description Here">
                                 </div>
                             </div>
                             <div class="form-group row">
                                 <label for="lname" class="col-sm-2 text-right control-label col-form-label">Slug</label>
                                 <div class="col-sm-9">
-                                    <input type="text" name="slug" class="form-control" id="slug" placeholder="Slug Here">
+                                    <input required type="text" name="slug" class="form-control" id="slug" placeholder="Slug Here">
                                 </div>
                             </div>
 

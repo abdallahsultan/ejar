@@ -63,6 +63,14 @@ $setting = \App\Http\Controllers\HomeController::getSetting();
 													</span>
 												@enderror
                 <div class="frm-group">
+                  <input type="number" name="phone" id="phone" placeholder="الجوال">
+                </div>
+                @error('phone')
+                <span class="invalid-feedback" style="display: block !important;" role="alert">
+														<strong>{{ $message }}</strong>
+													</span>
+												@enderror
+                <div class="frm-group">
                   <input type="password" name="password" id="pass" placeholder="كلمة المرور">
                 </div>
                 @error('password')

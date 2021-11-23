@@ -40,6 +40,19 @@ Route::get('/admin/logout', [HomeController::class, 'logout'])->name('admin_logo
 Route::middleware('auth')->prefix('myaccount')->namespace('myaccount')->group(function () {
     Route::get('/', [\App\Http\Controllers\UserController::class, 'index'])->name('myprofile');
     Route::get('/rents', [\App\Http\Controllers\UserController::class, 'getRents'])->name('myrents');
+    Route::get('requestrents', [\App\Http\Controllers\UserController::class, 'request_rents'])->name('requestrents');
+    Route::get('/addcarwebsite', [\App\Http\Controllers\UserController::class, 'addcarweb'])->name('addcar');
+    Route::post('storecarwebsite', [\App\Http\Controllers\UserController::class, 'storecar'])->name('user_car_store');
+    Route::get('allcaruser', [\App\Http\Controllers\UserController::class, 'allcaruser'])->name('user_car_all');
+    Route::get('user_car_edit/{id}', [\App\Http\Controllers\UserController::class, 'user_edit_car'])->name('user_car_edit');
+    Route::post('use_car_update{id}', [\App\Http\Controllers\UserController::class, 'updatecar'])->name('use_car_update');
+    Route::get('user_destroy_car/{id}', [\App\Http\Controllers\UserController::class, 'user_destroy_car'])->name('user_car_delete');
+    //images
+    Route::get('user_car_detail/{id}', [\App\Http\Controllers\UserController::class, 'user_car_detail'])->name('user_car_detail');
+    Route::get('/create_image_car/{car_id}', [\App\Http\Controllers\UserController::class, 'create_image_car'])->name('User_image_addcar');
+    Route::post('store_image_car/{car_id}', [\App\Http\Controllers\UserController::class, 'store_image_car'])->name('User_image_store');
+    Route::get('delete_image_car/{id}/{car_id}', [\App\Http\Controllers\UserController::class, 'destroy_image_car'])->name('User_image_delete');
+
 
 });
 
@@ -105,10 +118,10 @@ Route::middleware('auth')->prefix('admin')->group(function () {
             Route::get('/create', [\App\Http\Controllers\Admin\CarController::class, 'create'])->name('admin_car_add');
             Route::post('store', [\App\Http\Controllers\Admin\CarController::class, 'store'])->name('admin_car_store');
             Route::get('edit/{id}', [\App\Http\Controllers\Admin\CarController::class, 'edit'])->name('admin_car_edit');
+            Route::get('car_detail/{id}', [\App\Http\Controllers\Admin\CarController::class, 'car_detail'])->name('admin_car_detail');
             Route::post('update{id}', [\App\Http\Controllers\Admin\CarController::class, 'update'])->name('admin_car_update');
             Route::get('delete/{id}', [\App\Http\Controllers\Admin\CarController::class, 'destroy'])->name('admin_car_delete');
             Route::get('show', [\App\Http\Controllers\Admin\CarController::class, 'show'])->name('admin_car_show');
-            Route::get('car_detail/{id}', [\App\Http\Controllers\Admin\CarController::class, 'car_detail'])->name('admin_car_detail');
         });
 
         #Car

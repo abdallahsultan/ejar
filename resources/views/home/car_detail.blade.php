@@ -5,7 +5,7 @@ $setting = \App\Http\Controllers\HomeController::getSetting();
 @extends('layouts.others')
 
 
-@section('title', $data->title)
+@section('title', $data->title ?? null)
 
 @section('description')
     {{ $data->description }}

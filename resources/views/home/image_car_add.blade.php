@@ -51,7 +51,7 @@
 
                 <div class="card-body border">
                     <div class="card">
-                        <form class="form-horizontal" action="{{ route('admin_image_store',['car_id'=>$data->id])}}" method="POST" enctype="multipart/form-data">
+                        <form class="form-horizontal" action="{{ route('User_image_store',['car_id'=>$data->id])}}" method="POST" enctype="multipart/form-data">
                             @csrf                            
                             <div class="card-body">                              
                                 
@@ -138,7 +138,7 @@
                                             <td style="line-height: 40px;padding-top: 35px;" class="table-danger"><a
                                                     class="btn btn-danger w-100 text-dange"
                                                     style="text-decoration: none;color:black;"
-                                                    href="{{ route('admin_image_delete',  ['id' => $image->id, 'car_id' => $data->id ]) }}"
+                                                    href="{{ route('User_image_delete',  ['id' => $image->id, 'car_id' => $data->id ]) }}"
                                                     onclick="return confirm('Are you sure?')">Delete</a></td>
                                                     
                                         </tr>
