@@ -117,7 +117,6 @@ class UserController extends Controller
         $data->category_id = $request->input('category_id');
         $data->detail = $request->input('detail');
         $data->price = $request->input('price');
-        $data->user_id = Auth::id();
         $data->brand = $request->input('brand');
         $data->brand_id = $request->input('brand_id');
         $data->model = $request->input('model');

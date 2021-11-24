@@ -205,7 +205,7 @@
                                     <label for="lname"
                                         class="col-sm-2 text-right control-label col-form-label">Image</label>
                                     <div class="col-sm-9">
-                                        <input required type="file" name="image" class="form-control" id="image">
+                                        <input  type="file" name="image" class="form-control" id="image">
                                         @if ($data->image)
                                             <img src="{{ Storage::url($data->image) }}" style="height: 150px;" alt="">
                                         @endif
