@@ -181,7 +181,7 @@ class AuthController extends ApiBaseController
 
         $changepassword=User::find(auth('api')->user()->id)->update(['password'=> Hash::make($request->password)]);
         if($changepassword){
-            return $this->sendSuccessMessage('Password is changed Successfull');
+            return $this->sendResponse('Password is changed Successfull');
         }else{
             return $this->sendErrorMessage('Some thing is error Please try agian');
         }
@@ -205,7 +205,7 @@ class AuthController extends ApiBaseController
               'email'=>$request->email]);
 
             if($update){
-               return $this->sendSuccessMessage('Your Profile Updated  Successfull');
+               return $this->sendResponse('Your Profile Updated  Successfull');
             }else{
                 return $this->sendErrorMessage('Some thing is error Please try agian');
             }
