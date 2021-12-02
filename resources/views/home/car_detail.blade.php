@@ -22,11 +22,11 @@ $setting = \App\Http\Controllers\HomeController::getSetting();
         <div class="container">
             <div class="row">
                 <div class="col-md-12">
-                    <h2 class="page-title">reservation</h2>
+                    <h2 class="page-title">حجز السيارة</h2>
                     <ol class="page-list">
-                        <li><a href="index.html"><i class="fa fa-home"></i> Home</a></li>
-                        <li><a href="#0">car list</a></li>
-                        <li>reservation</li>
+                        <li><a href="{{ route('home')}}"><i class="fa fa-home"></i> الرئيسية /</a></li>
+                        <li><a href="#0">قائمة السيارات </a></li>
+                        <li>حجوزات</li>
                     </ol>
                 </div>
             </div>
@@ -79,7 +79,7 @@ $setting = \App\Http\Controllers\HomeController::getSetting();
                 <div class="col-lg-6">
                     <aside class="sidebar">
                         <div class="widget widget-all-cars">
-                            <h4 class="widget-title">Car Specs</h4>
+                            <h4 class="widget-title">مواصفات السيارة</h4>
                             <ul class="cars-list">
                                 <li><i style="margin-right: 10px;color: #e83231;" class="fa fa-car"></i>Model:
                                     {{ $data->model }} {{ $data->year }}
@@ -109,7 +109,7 @@ $setting = \App\Http\Controllers\HomeController::getSetting();
                 <form class="reservation-form" action="{{route('makereservation',[ 'id'=>$data->id, 'userid'=>$userid ])}}" method="POST">
                     @csrf
                     <div class="content-block" style="padding-top: 30px;">
-                        <h3 class="title">Reservation Info</h3>
+                        <h3 class="title">بيانات الحجز</h3>
                         <div class="row">
 
                             <div class="form-group col-md-6">
@@ -128,7 +128,7 @@ $setting = \App\Http\Controllers\HomeController::getSetting();
                         <div class="row">
                             
                             <div class="col-lg-6 form-group">
-                                <input required type="tel"  name="phone" placeholder="Phone">
+                                <input required type="tel"  name="phone" placeholder="الجوال ">
                             </div>
                             
                             
@@ -136,22 +136,20 @@ $setting = \App\Http\Controllers\HomeController::getSetting();
                     </div>
                    
                     <div class="content-block" style="padding-top: 30px;">
-                        <h3 class="title">Payment Method</h3>
+                        <h3 class="title">نوع الدفع</h3>
                         <div class="row">
                             <div class="col-lg-6 form-group">
-                                <select required name="payment_method" style="display: none;">
-                                    <option>Select Payment Methos</option>
+                                <!-- <select required name="payment_method" style="display: none;">
+                                    <option>طريقه الدفع</option>
                                     <option value="paypal" >Paypal</option>
                                     <option value="cash" >Payoneer</option>
                                     <option value="visacard" >Visa Card</option>
-                                </select>
-                                <div class="nice-select" tabindex="0"><span class="current">Select Payment
-                                        Methos</span>
+                                </select> -->
+                                <div class="nice-select" tabindex="0"><span class="current">أختر طريقه الدفع</span>
                                     <ul class="list">
-                                        <li data-value="Select Payment Methos" class="option selected">Select
-                                            Payment Methos</li>
+                                        <li data-value="Select Payment Methos" class="option selected">أختر طريقه الدفع</li>
                                         <!-- <li data-value="paypal" class="option">Paypal</li> -->
-                                        <li data-value="cash" class="option">Cash</li>
+                                        <li data-value="cash" class="option">نقدى</li>
                                         <!-- <li data-value="visacard" class="option">Visa Card</li> -->
                                     </ul>
                                 </div>
@@ -159,14 +157,14 @@ $setting = \App\Http\Controllers\HomeController::getSetting();
                         </div>
                     </div>
                     <div class="content-block" style="padding-top: 30px;">
-                        <h3 class="title">Addisonal Information</h3>
+                        <h3 class="title">تفاصيل اخرى</h3>
                         <div class="row">
                             <div class="col-lg-12 form-group">
-                                <textarea name="comment" placeholder="Write addisonal information in here"></textarea>
+                                <textarea name="comment" placeholder="يمكنك كتابه تفاصيل اخرى للحجز"></textarea>
                             </div>
                             <div class="col-lg-12">
-                                <button type="reset" class="cmn-btn bg-black">Cancel</button>
-                                <button type="submit" class="cmn-btn">reservation </button>
+                                <button type="reset" class="cmn-btn bg-black">الغاء</button>
+                                <button type="submit" class="cmn-btn">حجز </button>
                             </div>
                         </div>
                     </div>

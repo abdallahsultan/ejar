@@ -24,8 +24,8 @@ $setting = \App\Http\Controllers\HomeController::getSetting();
                 <div class="col-md-12">
                     <h2 class="page-title">بحث</h2>
                     <ol class="page-list">
-                        <li><a href="{{route('home')}}"><i class="fa fa-home"></i> الرئيسية</a></li>
-                        <li><a href="#0">{{ $search }} أبحث عن سيارة</a></li>
+                        <li><a href="{{route('home')}}"><i class="fa fa-home"></i> الرئيسية / </a></li>
+                        <li><a href="#0">  أبحث عن سيارة ( {{ $search }} )</a></li>
                     </ol>
                 </div>
             </div>

@@ -141,11 +141,7 @@ class HomeController extends Controller
         return view('home.about');
     }
 
-    public function abuosma()
-    {
-        return view('home.abuOsasma');
-    }
-
+   
     public function contactus()
     {
         return view('home.contact');

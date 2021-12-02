@@ -22,7 +22,7 @@ $setting = \App\Http\Controllers\HomeController::getSetting();
                 <div class="col-md-12">
                     <h2 class="page-title">أسئلة مكررة</h2>
                     <ol class="page-list">
-                        <li><a href="{{ route('home') }}"><i class="fa fa-home"></i> الرئيسية</a></li>
+                        <li><a href="{{ route('home') }}"><i class="fa fa-home"></i> الرئيسية /</a></li>
                         <li>أسئلة مكررة</li>
                     </ol>
                 </div>

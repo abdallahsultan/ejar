@@ -58,7 +58,7 @@ $setting = \App\Http\Controllers\HomeController::getSetting();
                                             <hr>
                                         <!-- <p>Aliquam sollicitudin dolores tristiquvel ornare, vitae aenean.</p> -->
                                         <a href="{{ route('cardetail', ['id' => $item->id, 'slug' => $item->slug]) }}"
-                                            class="cmn-btn">rent car</a>
+                                            class="cmn-btn">حجز السيارة</a>
                                     </div>
                                     <div class="car-item-meta">
                                         <ul class="details-list">
@@ -148,13 +148,13 @@ $setting = \App\Http\Controllers\HomeController::getSetting();
 ويكون هنالك عقد الكتروني وبعد الاتفاق بين الطرفين على العقد يخير العميل بين أن
 تقوم الشركة بتوصيل السيارة له أو يقوم العميل بالذهاب للموقع واستلامها.</p>
                         </div>
-                        <div class="block-body">
+                        <!-- <div class="block-body">
                             <ul class="num-list">
                                 <li><span class="num">01</span>Download Car rent app</li>
                                 <li><span class="num">02</span>choose the car you like</li>
                                 <li><span class="num">03</span>car reservation</li>
                             </ul>
-                        </div>
+                        </div> -->
                     </div>
                 </div>
             </div>
