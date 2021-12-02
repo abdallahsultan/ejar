@@ -22,10 +22,10 @@ $setting = \App\Http\Controllers\HomeController::getSetting();
         <div class="container">
             <div class="row">
                 <div class="col-md-12">
-                    <h2 class="page-title">All Cars</h2>
+                    <h2 class="page-title">جميع السيارات</h2>
                     <ol class="page-list">
-                        <li><a href="index.html"><i class="fa fa-home"></i> Home</a></li>
-                        <li><a href="#0">All Cars</a></li>
+                        <li><a href="{{route('home')}}"><i class="fa fa-home"></i> الرئيسية</a></li>
+                        <li><a href="#0">جميع السيارات </a></li>
                     </ol>
                 </div>
             </div>
@@ -39,7 +39,7 @@ $setting = \App\Http\Controllers\HomeController::getSetting();
                                     <div class="col-lg-12 col-md-7 col-sm-4 d-flex">
                                         @livewire('search')
 
-                                        <button class="search-submit-btn">Search</button>
+                                        <button class="search-submit-btn">بحث</button>
                                     </div>
                                 </div>
                             </form>
@@ -71,11 +71,16 @@ $setting = \App\Http\Controllers\HomeController::getSetting();
                             <div class="col-md-4 col-12">
                                 <div class="car-item">
 
-                                    <img src="{{ Storage::url($item->image) }}" alt="image">
+                                <img src="{{ Storage::url($item->image) }}" alt="image" style="height: 270px; width:100%;">
                                     <div class="car-item-body">
                                         <div class="content">
                                             <h4 class="title">{{ $item->brand }} {{ $item->model }}</h4>
-                                            <span class="price">start form ${{ $item->price }} per day</span>
+                                            <span class="price">start form  ريال سعودى{{ $item->price }} per day</span>
+                                            <hr>
+                                            <span class="name">الأسم:  {{ $item->user->name }}</span>
+                                            &nbsp;	
+                                            <span class="phone"> الجوال :{{ $item->user->phone }}</span>
+                                            <hr>
                                             <p>{!! $item->description !!}</p>
                                             <a href="{{ route('cardetail', ['id' => $item->id, 'slug' => $item->slug]) }}"
                                                 class="cmn-btn">rent car</a>
@@ -96,11 +101,12 @@ $setting = \App\Http\Controllers\HomeController::getSetting();
                     </div>
                     <nav class="d-pagination" aria-label="Page navigation example">
                         <ul class="pagination justify-content-center">
-                            <li class="page-item active"><a class="page-link" href="#">1</a></li>
-                            <li class="page-item"><a class="page-link" href="#">2</a></li>
-                            <li class="page-item"><a class="page-link" href="#">3</a></li>
-                            <li class="page-item"><a class="page-link" href="#">4</a></li>
-                            <li class="page-item"><a class="page-link" href="#">5</a></li>
+                        @if ($dataList->links()->paginator->hasPages())
+                                <div style="color:red;" class="mt-4 p-4 box has-text-centered">
+                                    {{ $dataList->links() }} 
+                                </div>
+                            @endif
+                           
                         </ul>
                     </nav>
                 </div>

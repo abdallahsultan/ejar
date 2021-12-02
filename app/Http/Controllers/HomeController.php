@@ -46,7 +46,7 @@ class HomeController extends Controller
 
     public function allcars()
     {
-        $data = Car::where('status', 'True')->get();
+        $data = Car::where('status', 'True')->paginate(6);
         //print_r($data);
         //exit();
         return view('home.car_list', ['dataList' => $data]);
@@ -54,7 +54,7 @@ class HomeController extends Controller
 
     public function cars($id, $slug)
     {
-        $data = Car::where('category_id', $id)->where('status', 'True')->get();
+        $data = Car::where('category_id', $id)->where('status', 'True')->paginate(6);
         //print_r($data);
         //exit();
         return view('home.car_list', ['dataList' => $data]);
@@ -79,11 +79,14 @@ class HomeController extends Controller
     public function getcar(Request $request)
     {
         $search = $request->input('search');
+        if($search== null){
+            $search=' ';
+        }
 
-        $count = Car::where('title', 'like', '%' . $search . '%')->where('status', 'True')->get()->count();
+        $count = Car::where('color', 'like', '%' . $search . '%')->Orwhere('title', 'like', '%' . $search . '%')->where('status', 'True')->get()->count();
 
         if ($count == 1) {
-            $data = Car::where('title', 'like', '%' . $search . '%')->where('status', 'True')->first();
+            $data = Car::where('color', 'like', '%' . $search . '%')->Orwhere('title', 'like', '%' . $search . '%')->where('status', 'True')->first();
             return redirect()->route('cardetail', ['id' => $data->id, 'slug' => $data->slug]);
         } else {
             return redirect()->route('carlist', ['search' => $search]);
@@ -92,15 +95,55 @@ class HomeController extends Controller
 
     public function carlist($search)
     {
-
-        $dataList = Car::where('title', 'like', '%' . $search . '%')->where('status', 'True')->get();
+        
+         
+        $dataList = Car::where('status', 'True')->Orwhere('title', 'like', '%' . $search . '%')->
+                                                Orwhere('price', 'like', '%' . $search . '%')->
+                                                Orwhere('color', 'like', '%' . $search . '%')->
+                                                Orwhere('slug', 'like', '%' . $search . '%')->
+                                                Orwhere('brand', 'like', '%' . $search . '%')->paginate(4);
+        // dd($dataList);
         return view('home.search_cars', ['search' => $search, 'dataList' => $dataList]);
     }
+    public function carsearch(Request $request )
+    {
+        $search=$request->car_search;
+        if(!$search){
+            $search='';
+        }
+        $orderby=$request->orderby;
+        if($orderby){
+            if($orderby == 'low_price'){
+                $ord='asc';
+            }elseif($orderby == 'higher_price'){
+                $ord='desc';
+            
+            }
+                
+                $dataList = Car::where('status', 'True')->where('title', 'like', '%' . $search . '%')->
+                                                        Orwhere('price', 'like', '%' . $search . '%')->
+                                                        Orwhere('color', 'like', '%' . $search . '%')->
+                                                        orderBy('price', $ord)->
+                                                        Orwhere('slug', 'like', '%' . $search . '%')->
+                                                        Orwhere('brand', 'like', '%' . $search . '%')->get();
+                // dd($dataList);
+                return view('home.search_cars', ['search' => $search, 'dataList' => $dataList]);
+            
+              
+        }else{
+            return redirect()->route('carlist', ['search' => $search]);
+        }
+     }
 
 
     public function aboutus()
     {
         return view('home.about');
+    }
+
+    public function abuosma()
+    {
+        return view('home.abuOsasma');
     }
 
     public function contactus()
@@ -120,7 +163,7 @@ class HomeController extends Controller
 
         $slider = Car::select('id', 'title', 'image', 'price', 'slug')->limit(6)->get();
         $daily = Car::select('id', 'title', 'image', 'price', 'slug', 'brand', 'model', 'gear_type', 'engine_power', 'fuel_type')->where('status','true')->limit(4)->inRandomOrder()->get();
-        $last = Car::select('id', 'title', 'image', 'price', 'slug', 'brand', 'model', 'gear_type', 'engine_power', 'fuel_type')->where('status','true')->limit(4)->orderByDesc('id')->get();
+        $last = Car::select('id', 'title', 'image', 'price', 'slug', 'brand', 'model', 'gear_type', 'engine_power', 'fuel_type','user_id')->where('status','true')->limit(4)->orderByDesc('id')->get();
         $picked = $daily = Car::select('id', 'title', 'image', 'price', 'slug', 'brand', 'model', 'gear_type', 'engine_power', 'fuel_type')->where('status','true')->limit(5)->inRandomOrder()->get();
 
 
@@ -174,15 +217,21 @@ class HomeController extends Controller
 
     public function sendmessage(Request $request)
     {
+        if (Auth::check()){
         $data =  new Message();
         $data->name = $request->input('name');
         $data->email = $request->input('email');
         $data->phone = $request->input('phone');
         $data->subject = $request->input('subject');
         $data->message = $request->input('message');
+        $data->user_id = Auth::user()->id;
         $data->save();
         Session::flash('message', 'this is a message');
-        return redirect()->route('contactus')->with('success', 'Message successfully sended.');
+        return redirect()->route('contactus');
+        }else{
+            return redirect()->route('login');
+            Session::flash('message', 'يجب تسجيل الدخول اولا');
+        }
     }
 
     public function makeReservation(Request $request, $car_id, $user_id)

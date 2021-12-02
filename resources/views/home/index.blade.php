@@ -44,13 +44,18 @@ $setting = \App\Http\Controllers\HomeController::getSetting();
                         @foreach ($last as $item)
                             <div class="car-item" >
                                 <div class="thumb">
-                                    <img src="{{ Storage::url($item->image) }}" alt="image" style="min-height: 270px">
+                                    <img src="{{ Storage::url($item->image) }}" alt="image" style="height: 270px; width:100%;">
                                 </div>
                                 <div class="car-item-body">
                                     <div class="content">
                                         <h4 class="title">{{ $item->model }} {{ $item->brand }}</h4>
                                         <span class="price">start form <span style="color: #e83231;font-weight:bold">
                                                 ريال سعودى{{ $item->price }} </span> per day</span>
+                                                <hr>
+                                            <span class="name">الأسم:  {{ $item->user->name }}</span>
+                                            <br>	
+                                            <span class="phone"> الجوال :{{ $item->user->phone }}</span>
+                                            <hr>
                                         <!-- <p>Aliquam sollicitudin dolores tristiquvel ornare, vitae aenean.</p> -->
                                         <a href="{{ route('cardetail', ['id' => $item->id, 'slug' => $item->slug]) }}"
                                             class="cmn-btn">rent car</a>
@@ -206,32 +211,32 @@ $setting = \App\Http\Controllers\HomeController::getSetting();
                 </div>
                 <div class="col-lg-6">
                     <div class="consulting-from-area">
-                        <h2 class="title">Contact Us</h2>
+                        <h2 class="title">تواصل معنا</h2>
                         @include('home.message')
                         <form class="consulting-form" method="POST" action="{{ route('sendmessage') }}">
                             @csrf
                             <div class="row">
                                 <div class="form-group col-md-12">
-                                    <input type="text" name="name" id="name" placeholder="Name & Surname">
+                                    <input type="text" name="name" id="name" placeholder="الاسم ">
                                 </div>
                             </div>
                             <div class="row">
                                 <div class="form-group col-md-6">
-                                    <input type="email" name="email" id="email" placeholder="Email Address">
+                                    <input type="email" name="email" id="email" placeholder="البريد الأليكترونى">
                                 </div>
                                 <div class="form-group col-md-6">
-                                    <input type="tel" name="phone" id="phone" placeholder="Phone">
+                                    <input type="tel" name="phone" id="phone" placeholder="الجوال">
                                 </div>
                             </div>
                             <div class="row">
                                 <div class="form-group col-md-12 ">
-                                    <input type="text" name="subject" id="subject" placeholder="Subject">
+                                    <input type="text" name="subject" id="subject" placeholder="الموضوع">
                                 </div>
                             </div>
                             <div class="form-group">
-                                <textarea name="message" placeholder="Message"></textarea>
+                                <textarea name="message" placeholder="الرساله"></textarea>
                             </div>
-                            <button type="submit" class="cmn-btn">submit now</button>
+                            <button type="submit" class="cmn-btn">ارسل الان</button>
                         </form>
                     </div>
                 </div>

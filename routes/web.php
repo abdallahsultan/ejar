@@ -40,6 +40,7 @@ Route::get('/admin/logout', [HomeController::class, 'logout'])->name('admin_logo
 Route::middleware('auth')->prefix('myaccount')->namespace('myaccount')->group(function () {
     Route::get('/', [\App\Http\Controllers\UserController::class, 'index'])->name('myprofile');
     Route::get('/rents', [\App\Http\Controllers\UserController::class, 'getRents'])->name('myrents');
+    Route::get('/mymessages', [\App\Http\Controllers\UserController::class, 'mymessages'])->name('mymessages');
     Route::get('requestrents', [\App\Http\Controllers\UserController::class, 'request_rents'])->name('requestrents');
     Route::get('/addcarwebsite', [\App\Http\Controllers\UserController::class, 'addcarweb'])->name('addcar');
     Route::post('storecarwebsite', [\App\Http\Controllers\UserController::class, 'storecar'])->name('user_car_store');
@@ -69,6 +70,7 @@ Route::get('/cardetail/{id}/{slug}', [HomeController::class, 'carDetail'])->name
 Route::get('/Acardetail/{id}/', [HomeController::class, 'AcarDetail'])->name('Acardetail');
 Route::post('/getcar', [HomeController::class, 'getcar'])->name('getcar');
 Route::get('/carlist/{search}', [HomeController::class, 'carlist'])->name('carlist');
+Route::get('/carsearch', [HomeController::class, 'carsearch'])->name('carsearch');
 Route::get('/faq', [HomeController::class, 'faq'])->name('faq');
 Route::get('/allcars', [HomeController::class, 'allcars'])->name('all_cars');
 

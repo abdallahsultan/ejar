@@ -22,33 +22,14 @@ $setting = \App\Http\Controllers\HomeController::getSetting();
         <div class="container">
             <div class="row">
                 <div class="col-md-12">
-                    <h2 class="page-title">reservation</h2>
+                    <h2 class="page-title">بحث</h2>
                     <ol class="page-list">
-                        <li><a href="index.html"><i class="fa fa-home"></i> Home</a></li>
-                        <li><a href="#0">{{ $search }} car list</a></li>
+                        <li><a href="{{route('home')}}"><i class="fa fa-home"></i> الرئيسية</a></li>
+                        <li><a href="#0">{{ $search }} أبحث عن سيارة</a></li>
                     </ol>
                 </div>
             </div>
-            <div class="row" style="margin-top: 30px">
-                <div class="col-lg-12">
-                    <div class="car-search-filter-area">
-                        <div class="car-search-filter-form-area">
-                            <form class="car-search-filter-form">
-                                @csrf
-                                <div class="row justify-content-between">
-                                    <div class="col-lg-12 col-md-7 col-sm-4 d-flex">
-                                        @livewire('search')
-
-                                        <button class="search-submit-btn">Search</button>
-                                    </div>
-                                </div>
-                            </form>
-                            @livewireScripts
-                        </div>
-                    </div>
-                </div>
-
-            </div>
+           
         </div>
     </section>
     <!-- inner-apge-banner end -->
@@ -60,21 +41,22 @@ $setting = \App\Http\Controllers\HomeController::getSetting();
                 <div class="col-lg-12">
                     <div class="car-search-filter-area">
                         <div class="car-search-filter-form-area">
-                            <form class="car-search-filter-form">
+                            <form class="car-search-filter-form" action="{{ url('carsearch') }}" method="GET">
                                 <div class="row justify-content-between">
                                     <div class="col-lg-4 col-md-5 col-sm-6">
                                         <div class="cart-sort-field">
-                                            <span class="caption">Sort by : </span>
-                                            <select>
-                                                <option>Pajero Range</option>
-                                                <option>Toyota Axio</option>
-                                                <option>Lancer</option>
+                                            <span class="caption">ترتيب ب : </span>
+                                            <select name="orderby" >
+                                               
+                                                <option value="low_price">أقل سعر</option>
+                                                <option value="higher_price">أعلى سعر</option>
+                                               
                                             </select>
                                         </div>
                                     </div>
                                     <div class="col-lg-7 col-md-7 col-sm-6 d-flex">
                                         <input type="text" name="car_search" id="car_search"
-                                            placeholder="Search what you want........">
+                                            placeholder="بحث عن ماتريد">
                                         <button class="search-submit-btn">Search</button>
                                     </div>
                                 </div>
@@ -88,20 +70,25 @@ $setting = \App\Http\Controllers\HomeController::getSetting();
                 </div>
             </div>
             <div class="row mt-70">
-                <div class="col-lg-8">
-                    <div class="car-search-result-area grid--view row mb-none-30">
-
+                <div class="col-lg-12">
+                    <div id="searchcar" class="car-search-result-area grid--view row mb-none-30">
+                        @if(count($dataList) > 0)
                         @foreach ($dataList as $item)
 
 
-                            <div class="col-md-6 col-12">
+                            <div class="col-md-4 col-12">
                                 <div class="car-item">
 
-                                    <img src="{{ Storage::url($item->image) }}" alt="image">
+                                    <img src="{{ Storage::url($item->image) }}" alt="image" style="height: 270px;">
                                     <div class="car-item-body">
                                         <div class="content">
                                             <h4 class="title">{{ $item->brand }} {{ $item->model }}</h4>
-                                            <span class="price">start form ${{ $item->price }} per day</span>
+                                            <span class="price">start form ريال سعودى{{ $item->price }} per day</span>
+                                            <hr>
+                                            <span class="name">الأسم:  {{ $item->user->name }}</span>
+                                            &nbsp;	
+                                            <span class="phone"> الجوال :{{ $item->user->phone }}</span>
+                                            <hr>
                                             <p>{!! $item->description !!}</p>
                                             <a href="{{ route('cardetail', ['id' => $item->id, 'slug' => $item->slug]) }}"
                                                 class="cmn-btn">rent car</a>
@@ -119,18 +106,17 @@ $setting = \App\Http\Controllers\HomeController::getSetting();
                             </div>
                             <!-- car-item end -->
                         @endforeach
+                        @else 
+                        <div style="    text-align: center;" class="col-md-12 col-12">
+                               
+                                    <h2>لا يوجد سياره بهذه الموصفات</h2>
+                               
+                            </div>
+                        @endif 
                     </div>
-                    <nav class="d-pagination" aria-label="Page navigation example">
-                        <ul class="pagination justify-content-center">
-                            <li class="page-item active"><a class="page-link" href="#">1</a></li>
-                            <li class="page-item"><a class="page-link" href="#">2</a></li>
-                            <li class="page-item"><a class="page-link" href="#">3</a></li>
-                            <li class="page-item"><a class="page-link" href="#">4</a></li>
-                            <li class="page-item"><a class="page-link" href="#">5</a></li>
-                        </ul>
-                    </nav>
+                  
                 </div>
-                <div class="col-lg-4">
+                <!-- <div class="col-lg-4">
                     <aside class="sidebar">
                         <div class="widget widget-reservation">
                             <h4 class="widget-title">reservation</h4>
@@ -177,7 +163,8 @@ $setting = \App\Http\Controllers\HomeController::getSetting();
                                     <button type="submit" class="cmn-btn">Reservation</button>
                                 </form>
                             </div>
-                        </div><!-- widget end -->
+                        </div> 
+                      
                         <div class="widget widget-price-filter">
                             <h4 class="widget-title">price filter</h4>
                             <div class="widget-body">
@@ -186,30 +173,10 @@ $setting = \App\Http\Controllers\HomeController::getSetting();
                                     <input type="text" id="amount" readonly><span>(Per Day)</span>
                                 </div>
                             </div>
-                        </div><!-- widget end -->
-                        <div class="widget widget-testimonial">
-                            <h4 class="widget-title">testimonial</h4>
-                            <div class="widget-body">
-                                <div class="testimonial-slider owl-carousel">
-                                    <div class="testimonial-item">
-                                        <div class="testimonial-item--header">
-                                            <div class="thumb"><img src="{{ asset('assets') }}/images/testimonial/1.jpg"
-                                                    alt="image"></div>
-                                            <div class="content">
-                                                <h6 class="name">martin hook</h6>
-                                                <span class="designation">business man</span>
-                                            </div>
-                                        </div>
-                                        <div class="testimonial-item--body">
-                                            <p>Tristique consequat, lorem sed vivamus donec eget, nulla pharetra lacinia
-                                                wisi diamaliquam velit nec.</p>
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
-                        </div><!-- widget end -->
+                        </div> -->
+                        
                     </aside>
-                </div>
+                </div> 
             </div>
         </div>
     </section>

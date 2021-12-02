@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use App\Models\Car;
 use App\Models\User;
 use App\Models\Image;
+use App\Models\Message;
 use App\Models\Category;
 use App\Models\Reservation;
 use Illuminate\Http\Request;
@@ -142,7 +143,11 @@ class UserController extends Controller
     }
 
 
+  public function mymessages(){
+      $messages=Message::where('user_id',auth()->user()->id)->get();
 
+      return view('home.user_messages', ['messages' => $messages]);
+  }
 
 
 

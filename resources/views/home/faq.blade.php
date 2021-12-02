@@ -108,32 +108,32 @@ $setting = \App\Http\Controllers\HomeController::getSetting();
 
                 <div class="col-lg-6">
                     <div class="consulting-from-area">
-                        <h2 class="title">Contact Us</h2>
+                        <h2 class="title">تواصل معنا</h2>
                         @include('home.message')
                         <form class="consulting-form" method="POST" action="{{ route('sendmessage') }}">
                             @csrf
                             <div class="row">
                                 <div class="form-group col-md-12">
-                                    <input type="text" name="name" id="name" placeholder="Name & Surname">
+                                    <input type="text" name="name" id="name" placeholder="الاسم ">
                                 </div>
                             </div>
                             <div class="row">
                                 <div class="form-group col-md-6">
-                                    <input type="email" name="email" id="email" placeholder="Email Address">
+                                <input type="email" name="email" id="email" placeholder="البريد الأليكترونى">
                                 </div>
                                 <div class="form-group col-md-6">
-                                    <input type="tel" name="phone" id="phone" placeholder="Phone">
+                                    <input type="tel" name="phone" id="phone" placeholder="الجوال">
                                 </div>
                             </div>
                             <div class="row">
                                 <div class="form-group col-md-12 ">
-                                    <input type="text" name="subject" id="subject" placeholder="Subject">
+                                    <input type="text" name="subject" id="subject" placeholder="الموضوع">
                                 </div>
                             </div>
                             <div class="form-group">
-                                <textarea name="message" placeholder="Message"></textarea>
+                                <textarea name="message" placeholder="الرساله"></textarea>
                             </div>
-                            <button type="submit" class="cmn-btn">submit now</button>
+                            <button type="submit" class="cmn-btn">ارسل الان</button>
                         </form>
                     </div>
                 </div>

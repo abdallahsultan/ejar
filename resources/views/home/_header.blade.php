@@ -9,20 +9,18 @@ $setting = \App\Http\Controllers\HomeController::getSetting();
             <div class="row ">
                 <div class="col-lg-3">
                     <ul class="social-links">
-                        @if ($setting->facebook != null)
+                        
                             <li><a href="{{ $setting->facebook }}" target="_blank"><i class="fa fa-facebook"></i></a>
                             </li>
-                        @endif
-                        @if ($setting->twitter != null)
+                        
                             <li><a href="{{ $setting->twitter }}" target="_blank"><i class="fa fa-twitter"></i></a></li>
-                        @endif
-                        @if ($setting->instagram != null)
+                        
                             <li><a href="{{ $setting->instagram }}" target="_blank"><i class="fa fa-instagram"></i></a>
                             </li>
-                        @endif
-                        @if ($setting->youtube != null)
+                     
                             <li><a href="{{ $setting->youtube }}" target="_blank"><i class="fa fa-youtube"></i></a></li>
-                        @endif
+                      
+                        <li><a href="https://www.snagoff.com/" target="_blank"><i class="fa fa-snapchat"></i></a></li>
                     </ul>
                 </div>
                 <div class="col-lg-6">
@@ -80,6 +78,7 @@ $setting = \App\Http\Controllers\HomeController::getSetting();
                         <li class="nav-item"> <a href="{{ route('contactus') }}" class="nav-link"
                                 style="margin-left: 15px;color: white;" href="#">
                                 <b>تواصل معنا</b> </a></li>
+                       
                        
                         <li class="nav-item"> <a href="{{ route('faq') }}" class="nav-link"
                                 style="margin-left: 15px;color: white;" href="#">

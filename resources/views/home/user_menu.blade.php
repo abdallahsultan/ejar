@@ -14,7 +14,7 @@
         <li><a href="{{route('user_car_all')}}">جميع السيارات </a></li>
         <li><a href="{{route('requestrents')}}">طلبات الحجوزات </a></li>
         @endif
-        <li><a href="#0">رسائلي</a></li>
+        <li><a href="{{route('mymessages')}}">رسائلي</a></li>
         <li><a href="{{route('logout')}}">تسجيل خروج</a></li>
           
         @php
