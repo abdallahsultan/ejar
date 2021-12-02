@@ -20,7 +20,7 @@ $setting = \App\Http\Controllers\HomeController::getSetting();
                      
                             <li><a href="{{ $setting->youtube }}" target="_blank"><i class="fa fa-youtube"></i></a></li>
                       
-                        <li><a href="https://www.snagoff.com/" target="_blank"><i class="fa fa-snapchat"></i></a></li>
+                        <!-- <li><a href="https://www.snagoff.com/" target="_blank"><i class="fa fa-snapchat"></i></a></li> -->
                     </ul>
                 </div>
                 <div class="col-lg-6">
