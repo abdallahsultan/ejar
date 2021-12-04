@@ -22,7 +22,7 @@ $setting = \App\Http\Controllers\HomeController::getSetting();
         <div class="container">
             <div class="row">
                 <div class="col-md-12">
-                    <h2 class="page-title">reservation</h2>
+                    <h2 class="page-title">حجز السيارة</h2>
                     <ol class="page-list">
                         <li><a href="index.html"><i class="fa fa-home"></i> Home</a></li>
                         <li><a href="#0">car list</a></li>
@@ -100,15 +100,15 @@ $setting = \App\Http\Controllers\HomeController::getSetting();
             <div class="content" style="padding-top: 50px;">
                 <div class="content-block">
                     <h3 class="car-name">{{ $data->brand }} {{ $data->model }}</h3>
-                    <span class="price" style="padding-top: 5px">Start form <span style="color: #e83231;font-weight:bold">
-                            ${{ $data->price }} </span> per day</span>
+                    <span class="price" style="padding-top: 5px">تبدأ من  <span style="color: #e83231;font-weight:bold">
+                            {{ $data->price }} </span> ريال في اليوم</span>
                     <p>{!! $data->description !!}</p>
                 </div>  
 
                 <form class="reservation-form" action="{{route('login')}}" method="POST">
                     @csrf 
                     <div class="content-block" style="padding-top: 30px;">
-                        <h3 class="title">Reservation Info</h3>
+                        <h3 class="title">تفاصيل الحجز</h3>
                         <div class="row">
 
                             <div class="form-group col-md-6">
@@ -134,11 +134,11 @@ $setting = \App\Http\Controllers\HomeController::getSetting();
                         </div>
                     </div>
                     <div class="content-block" style="padding-top: 30px;">
-                        <h3 class="title">Payment Method</h3>
+                        <h3 class="title">طريقة الدفع</h3>
                         <div class="row">
                             <div class="col-lg-6 form-group">
                                 <select required name="payment_method" style="display: none;">
-                                    <option>Select Payment Methos</option>
+                                    <option>Select PaymentS Methos</option>
                                     <option value="paypal" >Paypal</option>
                                     <option value="cash" >Payoneer</option>
                                     <option value="visacard" >Visa Card</option>
@@ -146,10 +146,8 @@ $setting = \App\Http\Controllers\HomeController::getSetting();
                                 <div class="nice-select" tabindex="0"><span class="current">Select Payment
                                         Methos</span>
                                     <ul class="list">
-                                        <li data-value="Select Payment Methos" class="option selected">Select
-                                            Payment Methos</li>
-                                        <li data-value="paypal" class="option">Paypal</li>
-                                        <li data-value="cash" class="option">Cash</li>
+                                    
+                                        <li data-value="cash" class="option">كاش</li>
                                         <li data-value="visacard" class="option">Visa Card</li>
                                     </ul>
                                 </div>

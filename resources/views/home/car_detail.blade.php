@@ -81,15 +81,15 @@ $setting = \App\Http\Controllers\HomeController::getSetting();
                         <div class="widget widget-all-cars">
                             <h4 class="widget-title">مواصفات السيارة</h4>
                             <ul class="cars-list">
-                                <li><i style="margin-right: 10px;color: #e83231;" class="fa fa-car"></i>Model:
+                                <li><i style="margin-right: 10px;color: #e83231;" class="fa fa-car"></i>الموديل:
                                     {{ $data->model }} {{ $data->year }}
                                 </li>
-                                <li><i style="margin-right: 10px;color: #e83231;" class="fa fa-sliders"></i>Gear Type:
+                                <li><i style="margin-right: 10px;color: #e83231;" class="fa fa-sliders"></i>ناقل الحركة:
                                     {{ $data->gear_type }}
                                 </li>
-                                <li><i style="margin-right: 10px;color: #e83231;" class="fa fa-sliders"></i>Engine
-                                    Power: {{ $data->engine_power }}hp</li>
-                                <li><i style="margin-right: 10px;color: #e83231;" class="fa fa-sliders"></i>Fuel Type:
+                                <li><i style="margin-right: 10px;color: #e83231;" class="fa fa-sliders"></i>قوة المحرك
+                                    : {{ $data->engine_power }}hp</li>
+                                <li><i style="margin-right: 10px;color: #e83231;" class="fa fa-sliders"></i>نوع البنزين:
                                     {{ $data->fuel_type }}
                                 </li>
                             </ul>
@@ -101,8 +101,8 @@ $setting = \App\Http\Controllers\HomeController::getSetting();
             <div class="content" style="padding-top: 50px;">
                 <div class="content-block">
                     <h3 class="car-name">{{ $data->brand }} {{ $data->model }}</h3>
-                    <span class="price" style="padding-top: 5px">Start form <span style="color: #e83231;font-weight:bold">
-                            ريال سعودى{{ $data->price }} </span> per day</span>
+                    <span class="price" style="padding-top: 5px">تبدأ من <span style="color: #e83231;font-weight:bold">
+                            {{ $data->price }} </span> ريال في اليوم</span>
                     <p>{!! $data->description !!}</p>
                 </div>
 

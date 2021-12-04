@@ -75,7 +75,7 @@ $setting = \App\Http\Controllers\HomeController::getSetting();
                                     <div class="car-item-body">
                                         <div class="content">
                                             <h4 class="title">{{ $item->brand }} {{ $item->model }}</h4>
-                                            <span class="price">start form  ريال سعودى{{ $item->price }} per day</span>
+                                            <span class="price">تبدأ من  ريال سعودى{{ $item->price }} ريال في اليوم</span>y
                                             <hr>
                                             <span class="name">الأسم:  {{ $item->user->name }}</span>
                                             &nbsp;	

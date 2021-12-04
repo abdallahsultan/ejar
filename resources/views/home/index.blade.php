@@ -2,7 +2,6 @@
 $setting = \App\Http\Controllers\HomeController::getSetting();
 
 @endphp
-<!-- اهم حته -->
 @extends('layouts.home')
 
 @section('title', $setting->title)
@@ -49,8 +48,8 @@ $setting = \App\Http\Controllers\HomeController::getSetting();
                                 <div class="car-item-body">
                                     <div class="content">
                                         <h4 class="title">{{ $item->model }} {{ $item->brand }}</h4>
-                                        <span class="price">start form <span style="color: #e83231;font-weight:bold">
-                                                ريال سعودى{{ $item->price }} </span> per day</span>
+                                        <span class="price">تبدأ من <span style="color: #e83231;font-weight:bold">
+                                                {{ $item->price }} </span> ريال في اليوم</span>
                                                 <hr>
                                             <span class="name">الأسم:  {{ $item->user->name }}</span>
                                             <br>	
@@ -92,8 +91,8 @@ $setting = \App\Http\Controllers\HomeController::getSetting();
                 <div class="col-lg-6">
                     <div class="section-header text-center">
                         <h2 class="section-title">بما نتميز</h2>
-                        <p> نستهدف في إيجار كبداية أكبر الشركات العاملة في مجال تأجير
-السيارات نظر ا لسمعتها، ولحجمها، ولانتشار فروعها</p>
+                        <p> نتميز بتوفير السيارة في اي وقت يريده العميل وبايصال السيارة الى العميل وأن نكون متواجدين في جميع مناطق المملكة العربية السعودية
+      </p>
                     </div>
                 </div>
             </div>
@@ -143,7 +142,7 @@ $setting = \App\Http\Controllers\HomeController::getSetting();
 التأجير 24 ساعة وتسلم السيارة للعميل عن طريق الشركة أو صاحب السيارة
 الشخصية حيث أن الشركات والأشخاص الراغبين في تأجير سيارتهم يسجلون في
 الموقع ويضعون السيارات ومواصفاتها وصورها وأسعار تأجيرها مما يساعدهم في
-تقليص عدد الموظفين والرسوم والفواتير... ويوفر التكاليف الاجمالية وأيض ا تعتبر
+تقليص عدد الموظفين والرسوم والفواتير... ويوفر التكاليف الاجمالية وأيضا تعتبر
 توفير للجهد والوقت والمال للعميل بتوصيل السيارة إلى موقعه...
 ويكون هنالك عقد الكتروني وبعد الاتفاق بين الطرفين على العقد يخير العميل بين أن
 تقوم الشركة بتوصيل السيارة له أو يقوم العميل بالذهاب للموقع واستلامها.</p>
@@ -174,6 +173,7 @@ $setting = \App\Http\Controllers\HomeController::getSetting();
 
 
     <!-- consulting-section start -->
+    
     <section class="consulting-section pt-120 pb-120">
         <div class="container">
             <div class="row">
@@ -185,6 +185,7 @@ $setting = \App\Http\Controllers\HomeController::getSetting();
                                     <img src="assets/images/brand-logo/1.png" alt="image">
                                 </div>
                             </div>
+                            
                         </div><!-- brand-item end -->
                         <div class="col-sm-6">
                             <div class="brand-item">
