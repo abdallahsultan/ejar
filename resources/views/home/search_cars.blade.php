@@ -25,7 +25,7 @@ $setting = \App\Http\Controllers\HomeController::getSetting();
                     <h2 class="page-title">بحث</h2>
                     <ol class="page-list">
                         <li><a href="{{route('home')}}"><i class="fa fa-home"></i> الرئيسية / </a></li>
-                        <li><a href="#0">  أبحث عن سيارة ( {{ $search }} )</a></li>
+                        <li><a href="#0">  ابحث عن سيارة ( {{ $search }} )</a></li>
                     </ol>
                 </div>
             </div>
@@ -83,7 +83,7 @@ $setting = \App\Http\Controllers\HomeController::getSetting();
                                     <div class="car-item-body">
                                         <div class="content">
                                             <h4 class="title">{{ $item->brand }} {{ $item->model }}</h4>
-                                            <span class="price">start form ريال سعودى{{ $item->price }} per day</span>
+                                            <span class="price"> start from {{ $item->price }} per day</span>
                                             <hr>
                                             <span class="name">الأسم:  {{ $item->user->name }}</span>
                                             &nbsp;	

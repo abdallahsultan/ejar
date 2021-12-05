@@ -5,7 +5,7 @@ $setting = \App\Http\Controllers\HomeController::getSetting();
 @extends('layouts.others')
 
 
-@section('title', $data->title ?? null)
+@section('title', $data->title)
 
 @section('description')
     {{ $data->description }}
@@ -24,9 +24,9 @@ $setting = \App\Http\Controllers\HomeController::getSetting();
                 <div class="col-md-12">
                     <h2 class="page-title">حجز السيارة</h2>
                     <ol class="page-list">
-                        <li><a href="{{ route('home')}}"><i class="fa fa-home"></i> الرئيسية /</a></li>
-                        <li><a href="#0">قائمة السيارات </a></li>
-                        <li>حجوزات</li>
+                        <li><a href="index.html"><i class="fa fa-home"></i> Home</a></li>
+                        <li><a href="#0">car list</a></li>
+                        <li>reservation</li>
                     </ol>
                 </div>
             </div>
@@ -34,7 +34,8 @@ $setting = \App\Http\Controllers\HomeController::getSetting();
     </section>
     <!-- inner-apge-banner end -->
     <section class="reservation-section pt-120 pb-120">
-        <div class="container">@include('home.message')
+        <div class="container">
+            @include('home.message')
             <div class="row">
                 
                 <div class="col-lg-6">
@@ -55,12 +56,10 @@ $setting = \App\Http\Controllers\HomeController::getSetting();
                                 <li data-target="#carouselExampleIndicators" data-slide-to="10"></li>
                             </ol>
                             <div class="carousel-inner" role="listbox">
-                                @php $count=1; @endphp
                                 @foreach ($dataList as $item)
-                                    <div class="carousel-item {{ $count == '1' ? 'active' : '' }}">
+                                    <div class="carousel-item {{ $item->title == '1' ? 'active' : '' }}">
                                         <img src="{{ Storage::url($item->image) }}" alt="" style="min-height: 400px">
                                     </div>
-                                    @php $count++; @endphp
                                 @endforeach
                             </div>
                             <a class="carousel-control-prev" href="#carouselExampleIndicators" role="button"
@@ -79,17 +78,17 @@ $setting = \App\Http\Controllers\HomeController::getSetting();
                 <div class="col-lg-6">
                     <aside class="sidebar">
                         <div class="widget widget-all-cars">
-                            <h4 class="widget-title">مواصفات السيارة</h4>
+                            <h4 class="widget-title">Car Specs</h4>
                             <ul class="cars-list">
-                                <li><i style="margin-right: 10px;color: #e83231;" class="fa fa-car"></i>الموديل:
+                                <li><i style="margin-right: 10px;color: #e83231;" class="fa fa-car"></i>Model:
                                     {{ $data->model }} {{ $data->year }}
                                 </li>
-                                <li><i style="margin-right: 10px;color: #e83231;" class="fa fa-sliders"></i>ناقل الحركة:
+                                <li><i style="margin-right: 10px;color: #e83231;" class="fa fa-sliders"></i>Gear Type:
                                     {{ $data->gear_type }}
                                 </li>
-                                <li><i style="margin-right: 10px;color: #e83231;" class="fa fa-sliders"></i>قوة المحرك
-                                    : {{ $data->engine_power }}hp</li>
-                                <li><i style="margin-right: 10px;color: #e83231;" class="fa fa-sliders"></i>نوع البنزين:
+                                <li><i style="margin-right: 10px;color: #e83231;" class="fa fa-sliders"></i>Engine
+                                    Power: {{ $data->engine_power }}hp</li>
+                                <li><i style="margin-right: 10px;color: #e83231;" class="fa fa-sliders"></i>Fuel Type:
                                     {{ $data->fuel_type }}
                                 </li>
                             </ul>
@@ -101,18 +100,18 @@ $setting = \App\Http\Controllers\HomeController::getSetting();
             <div class="content" style="padding-top: 50px;">
                 <div class="content-block">
                     <h3 class="car-name">{{ $data->brand }} {{ $data->model }}</h3>
-                    <span class="price" style="padding-top: 5px">تبدأ من <span style="color: #e83231;font-weight:bold">
+                    <span class="price" style="padding-top: 5px">تبدأ من  <span style="color: #e83231;font-weight:bold">
                             {{ $data->price }} </span> ريال في اليوم</span>
                     <p>{!! $data->description !!}</p>
-                </div>
+                </div>  
 
-                <form class="reservation-form" action="{{route('makereservation',[ 'id'=>$data->id, 'userid'=>$userid ])}}" method="POST">
-                    @csrf
+                <form class="reservation-form" action="{{route('login')}}" method="POST">
+                    @csrf 
                     <div class="content-block" style="padding-top: 30px;">
-                        <h3 class="title">بيانات الحجز</h3>
+                        <h3 class="title">تفاصيل الحجز</h3>
                         <div class="row">
 
-                            <div class="form-group col-md-4">
+                            <div class="form-group col-md-6">
                                 <input required type="date" name="r_start_date" class="form-control has-icon datepicker-here hasDatepicker"
                                     data-language="en" placeholder="Pickup Date" id="dp1610219160735">
                             </div>
@@ -128,43 +127,42 @@ $setting = \App\Http\Controllers\HomeController::getSetting();
                         <div class="row">
                             
                             <div class="col-lg-6 form-group">
-                                <input required type="tel" maxlength="10" name="phone" placeholder="الجوال ">
+                                <input required type="tel"  name="phone" placeholder="Phone">
                             </div>
                             
                             
                         </div>
                     </div>
-                   
                     <div class="content-block" style="padding-top: 30px;">
-                        <h3 class="title">نوع الدفع</h3>
+                        <h3 class="title">طريقة الدفع</h3>
                         <div class="row">
                             <div class="col-lg-6 form-group">
                                 <select required name="payment_method" style="display: none;">
-                                    <option>طريقه الدفع</option>
-                                   
-                                    <option value="cash" >نقدى</option>
-                                  
+                                    <option>Select PaymentS Methos</option>
+                                    <option value="paypal" >Paypal</option>
+                                    <option value="cash" >Payoneer</option>
+                                    <option value="visacard" >Visa Card</option>
                                 </select>
-                                <div class="nice-select" tabindex="0"><span class="current">أختر طريقه الدفع</span>
+                                <div class="nice-select" tabindex="0"><span class="current">Select Payment
+                                        Methos</span>
                                     <ul class="list">
-                                        <li data-value="Select Payment Methos" class="option selected">أختر طريقه الدفع</li>
-                                        <!-- <li data-value="paypal" class="option">Paypal</li> -->
-                                        <li data-value="cash" class="option">نقدى</li>
-                                        <!-- <li data-value="visacard" class="option">Visa Card</li> -->
+                                    
+                                        <li data-value="cash" class="option">كاش</li>
+                                        <li data-value="visacard" class="option">Visa Card</li>
                                     </ul>
                                 </div>
                             </div>
                         </div>
                     </div>
                     <div class="content-block" style="padding-top: 30px;">
-                        <h3 class="title">تفاصيل اخرى</h3>
+                        <h3 class="title">Addisonal Information</h3>
                         <div class="row">
                             <div class="col-lg-12 form-group">
-                                <textarea name="comment" placeholder="يمكنك كتابه تفاصيل اخرى للحجز"></textarea>
+                                <textarea name="comment" placeholder="Write addisonal information in here"></textarea>
                             </div>
                             <div class="col-lg-12">
-                                <button type="reset" class="cmn-btn bg-black">الغاء</button>
-                                <button type="submit" class="cmn-btn">حجز </button>
+                                <button type="reset" class="cmn-btn bg-black">Cancel</button>
+                                <button type="submit" class="cmn-btn">reservation </button>
                             </div>
                         </div>
                     </div>

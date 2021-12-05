@@ -24,7 +24,7 @@ $setting = \App\Http\Controllers\HomeController::getSetting();
                     <h2 class="page-title">نبذه عنا</h2>
                     <ol class="page-list">
                         <li><a href="{{route('home')}}"><i class="fa fa-home"></i> الرئيسية</a></li>
-                        <li>/نبذا عنا</li>
+                        <li>/نبذه عنا</li>
                     </ol>
                 </div>
             </div>
@@ -56,8 +56,7 @@ $setting = \App\Http\Controllers\HomeController::getSetting();
                 <div class="col-lg-6">
                     <div class="section-header text-center">
                         <h2 class="section-title">بما نتميز</h2>
-                        <p> نستهدف في إيجار كبداية أكبر الشركات العاملة في مجال تأجير
-السيارات نظر ا لسمعتها، ولحجمها، ولانتشار فروعها</p>
+                        <p> ننتميز بتوفير السيارة في أي وقت يريده العميل وبايصال السيارة الى العميل وأن نكون متواجدين في جميع مناطق المملكة العربية السعودية</p>
                     </div>
                 </div>
             </div>

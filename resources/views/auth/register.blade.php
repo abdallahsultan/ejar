@@ -20,10 +20,10 @@ $setting = \App\Http\Controllers\HomeController::getSetting();
         <div class="container">
             <div class="row">
                 <div class="col-md-12">
-                    <h2 class="page-title"> أنشاء حساب جديد </h2>
+                    <h2 class="page-title"> إنشاء حساب جديد </h2>
                     <ol class="page-list">
                         <li><a href="{{route('home')}}"><i class="fa fa-home"></i> الرئيسية</a>  </li>
-                        <li> /   أنشاء حساب جديد </li>
+                        <li> /   إنشاء حساب جديد </li>
                     </ol>
                 </div>
             </div>
@@ -47,7 +47,7 @@ $setting = \App\Http\Controllers\HomeController::getSetting();
               <form class="registration-form" method="POST" action="{{ route('register') }}">
               @csrf
                 <div class="frm-group">
-                  <input type="text" name="name" id="f-name" placeholder="ألاسم أو اللقب ">
+                  <input type="text" name="name" id="f-name" placeholder="الاسم أو اللقب ">
                 </div>
                 @error('name')
                 <span class="invalid-feedback" style="display: block !important;" role="alert">
@@ -55,7 +55,7 @@ $setting = \App\Http\Controllers\HomeController::getSetting();
 													</span>
 												@enderror
                 <div class="frm-group">
-                  <input type="email" name="email" id="email" placeholder="البريد الألكترونى">
+                  <input type="email" name="email" id="email" placeholder="البريد الالكترونى">
                 </div>
                 @error('email')
                 <span class="invalid-feedback" style="display: block !important;" role="alert">
@@ -105,7 +105,7 @@ $setting = \App\Http\Controllers\HomeController::getSetting();
                 </div>
             @endif
                 <div class="frm-group">
-                  <input type="submit" value="أنشاء حساب جديد">
+                  <input type="submit" value="انشاء حساب جديد">
                 </div>
              
               </form>
