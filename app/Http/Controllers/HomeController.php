@@ -68,7 +68,7 @@ class HomeController extends Controller
         if(Auth::check()){
             return view('home.car_detail', ['data' => $data, 'dataList' => $dataList, 'userid' => $userid]);
         }else{
-            return view('home.car_detail_nl', ['data' => $data, 'dataList' => $dataList]);
+            return redirect()->route('login');
         }
         
         // print_r($dataList);

@@ -112,7 +112,7 @@ $setting = \App\Http\Controllers\HomeController::getSetting();
                         <h3 class="title">بيانات الحجز</h3>
                         <div class="row">
 
-                            <div class="form-group col-md-6">
+                            <div class="form-group col-md-4">
                                 <input required type="date" name="r_start_date" class="form-control has-icon datepicker-here hasDatepicker"
                                     data-language="en" placeholder="Pickup Date" id="dp1610219160735">
                             </div>
@@ -128,7 +128,7 @@ $setting = \App\Http\Controllers\HomeController::getSetting();
                         <div class="row">
                             
                             <div class="col-lg-6 form-group">
-                                <input required type="tel"  name="phone" placeholder="الجوال ">
+                                <input required type="tel" maxlength="10" name="phone" placeholder="الجوال ">
                             </div>
                             
                             
@@ -139,12 +139,12 @@ $setting = \App\Http\Controllers\HomeController::getSetting();
                         <h3 class="title">نوع الدفع</h3>
                         <div class="row">
                             <div class="col-lg-6 form-group">
-                                <!-- <select required name="payment_method" style="display: none;">
+                                <select required name="payment_method" style="display: none;">
                                     <option>طريقه الدفع</option>
-                                    <option value="paypal" >Paypal</option>
-                                    <option value="cash" >Payoneer</option>
-                                    <option value="visacard" >Visa Card</option>
-                                </select> -->
+                                   
+                                    <option value="cash" >نقدى</option>
+                                  
+                                </select>
                                 <div class="nice-select" tabindex="0"><span class="current">أختر طريقه الدفع</span>
                                     <ul class="list">
                                         <li data-value="Select Payment Methos" class="option selected">أختر طريقه الدفع</li>

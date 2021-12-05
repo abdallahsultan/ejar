@@ -82,7 +82,7 @@ $setting = \App\Http\Controllers\HomeController::getSetting();
                   <input type="password" name="password_confirmation" id="re-pass" placeholder="تأكيد كلمة المرور">
                 </div>
                 <div class="frm-group">
-                 <select name="level" style="text-align: right;" >
+                 <select name="level" style="text-align: right;" required >
                      <option value="user">مستخدم </option>
                      <option value="renter"> مؤجر  شخصى</option>
                      <option value="office"> مكتب </option>
