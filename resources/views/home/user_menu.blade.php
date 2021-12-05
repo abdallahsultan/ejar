@@ -14,7 +14,7 @@
         <li><a href="{{route('user_car_all')}}">جميع السيارات </a></li>
         <li><a href="{{route('requestrents')}}">طلبات الحجوزات </a></li>
         @endif
-        @if(Auth::user()->level == 'office' ||Auth::user()->level == 'renter' ||Auth::user()->level == 'user')
+        @if(Auth::user()->level == 'office' ||Auth::user()->level == 'renter' || Auth::user()->level == 'user')
         <li><a href="{{route('mymessages')}}">رسائلي</a></li>
         @endif
         <li><a href="{{route('logout')}}">تسجيل خروج</a></li>
