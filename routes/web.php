@@ -12,6 +12,7 @@ use App\Http\Controllers\HomeController;
 | contains the "web" middleware group. Now create something great!
 |
 */
+Route::post('register', [HomeController::class,'register'])->name('register');
 
 Route::get('/asd', function () {
     return view('layouts.home');

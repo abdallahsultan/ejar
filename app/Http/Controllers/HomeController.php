@@ -2,18 +2,20 @@
 
 namespace App\Http\Controllers;
 
-use App\Models\Setting;
-use App\Models\Category;
-use Illuminate\Http\Request;
-use Illuminate\Support\Facades\Auth;
-use Illuminate\Support\Facades\Session;
-use App\Models\Message;
+use DateTime;
 use App\Models\Car;
 use App\Models\Faq;
+use App\Models\User;
 use App\Models\Image;
+use App\Models\Message;
+use App\Models\Setting;
+use App\Models\Category;
 use App\Models\Reservation;
+use Illuminate\Http\Request;
 use Illuminate\Support\Facades\DB;
-use DateTime;
+use Illuminate\Support\Facades\Auth;
+use Illuminate\Support\Facades\Session;
+use Illuminate\Support\Facades\Validator;
 
 class HomeController extends Controller
 {
@@ -90,6 +92,42 @@ class HomeController extends Controller
             return redirect()->route('cardetail', ['id' => $data->id, 'slug' => $data->slug]);
         } else {
             return redirect()->route('carlist', ['search' => $search]);
+        }
+    }
+    public function register(Request $request)
+    {
+        $data=$request->all();
+        // dd($data);
+        $validator = Validator::make($request->all(), [
+            'name' => 'required',
+            'email' => 'required|max:255|unique:users,email,',
+            'level' => 'required',
+            'password' => 'required|min:6',
+            'phone' => 'required|min:10|numeric|unique:users,phone,',
+           
+            
+        ]);
+        if ($validator->fails()) {
+            Session::flash('error', $validator->messages()->first());
+            return redirect()->back()->withInput();
+         
+           
+        }
+      
+        $user= User::create([
+            'name' => $data['name'],
+            'email' => $data['email'],
+            'password' => bcrypt($data['password']),
+            'level' =>$data['level'],
+            'phone' =>$data['phone'],
+        ]);
+        if($user){
+            auth()->login($user);
+            Session::flash('message', 'this is a message');
+            return redirect()->route('home')->with('success', 'تم تسجيل الدخول');
+        }else{
+            Session::flash('message', 'this is a message');
+            return back()->with('error', 'حدث شىء خطاء');
         }
     }
 

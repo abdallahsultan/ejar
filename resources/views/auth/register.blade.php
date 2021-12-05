@@ -47,40 +47,50 @@ $setting = \App\Http\Controllers\HomeController::getSetting();
               <form class="registration-form" method="POST" action="{{ route('register') }}">
               @csrf
                 <div class="frm-group">
-                  <input type="text" name="name" id="f-name" placeholder="الاسم أو اللقب ">
-                </div>
-                @error('name')
+                  <input type="text" name="name" id="f-name" required placeholder="الاسم أو اللقب ">
+                  @error('name')
                 <span class="invalid-feedback" style="display: block !important;" role="alert">
 														<strong>{{ $message }}</strong>
 													</span>
 												@enderror
-                <div class="frm-group">
-                  <input type="email" name="email" id="email" placeholder="البريد الالكترونى">
                 </div>
-                @error('email')
+                
+                <div class="frm-group">
+                  <input type="email" name="email" id="email" required placeholder="البريد الالكترونى">
+                  @error('email')
                 <span class="invalid-feedback" style="display: block !important;" role="alert">
 														<strong>{{ $message }}</strong>
 													</span>
 												@enderror
-                <div class="frm-group">
-                  <input type="number" name="phone" id="phone" placeholder="الجوال">
                 </div>
-                @error('phone')
+             
+                <div class="frm-group">
+                  <input type="number" name="phone" id="phone" maxlength="10" required placeholder="الجوال">
+                  @error('phone')
                 <span class="invalid-feedback" style="display: block !important;" role="alert">
 														<strong>{{ $message }}</strong>
 													</span>
 												@enderror
-                <div class="frm-group">
-                  <input type="password" name="password" id="pass" placeholder="كلمة المرور">
                 </div>
-                @error('password')
-                <span class="invalid-feedback" style="display: block !important;" role="alert">
+         
+                <div class="frm-group">
+                  <input type="password" name="password" id="pass" required placeholder="كلمة المرور">
+                  @error('password')
+                <span class="invalid-feedback" style="display: block !important;"required role="alert">
 														<strong>{{ $message }}</strong>
 													</span>
 												@enderror
-                <div class="frm-group">
-                  <input type="password" name="password_confirmation" id="re-pass" placeholder="تأكيد كلمة المرور">
                 </div>
+              
+                <div class="frm-group">
+                  <input type="password" name="password_confirmation" id="re-pass" required placeholder="تأكيد كلمة المرور">
+                  @error('password_confirmation')
+                <span class="invalid-feedback" style="display: block !important;"required role="alert">
+														<strong>{{ $message }}</strong>
+													</span>
+												@enderror
+                </div>
+             
                 <div class="frm-group">
                  <select name="level" style="text-align: right;" required >
                      <option value="user">مستخدم </option>
