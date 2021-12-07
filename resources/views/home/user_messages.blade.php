@@ -60,6 +60,7 @@ $setting = \App\Http\Controllers\HomeController::getSetting();
                                         <td style="color:red;">Not Read</td>
                                         @endif
                                     </tr>
+                                    <tr style="text-align: center;font-weight: bold;"><td colspan="2">رد الأدمن :</td><td style="color:green;" colspan="5">{{$item->note}}</td></tr>
                                 @endforeach
                                 @else
                                 <tr style="text-align: center;font-weight: bold;"><td colspan="7"> لا يوجد رسائل</td> </tr> 

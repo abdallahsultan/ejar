@@ -92,16 +92,7 @@
                                                         <td style="line-height: 40px"> {{ $item->email }} </td>
                                                         <td style="line-height: 40px"> {{ $item->phone }} </td>
                                                         <td style="line-height: 40px"> {{ $item->address }} </td>
-                                                        <td style="line-height: 40px">
-                                                            @foreach ($item->roles as $row)
-                                                                {{$row->name}},
-                                                            @endforeach
-                                                            <a href="{{route('admin_user_roles',['id'=>$item->id])}}" onclick="return !window.open(this.href,'','top=50,left=100,width=800,height=600')">
-                                                                <i class="mdi mdi-account-plus"></i>
-
-                                                            </a>
-                                                        </td>Add Image</a>
-                                                        </td>
+                                                        <td style="line-height: 40px"> {{$item->level}}</td>
                                                         <td style="line-height: 40px"><a
                                                                 class="btn btn-outline-warning w-100 "
                                                                 style="text-decoration: none;color:black;border-radius:7px"

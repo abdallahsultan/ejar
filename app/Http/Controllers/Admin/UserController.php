@@ -81,6 +81,7 @@ class UserController extends Controller
         $data->name=$request->input('name');
         $data->email=$request->input('email');
         $data->phone=$request->input('phone');
+        // $data->level=$request->input('level');
         if ($request->file('image')!=null){
             $data->profile_photo_path=Storage::putFile('profile-photos',$request->file('image'));
         }
@@ -105,7 +106,10 @@ class UserController extends Controller
     public function user_role_delete(Request $request, User $user,$userid,$roleid)
     {
         $user=User::find($userid);
-        $user->roles()->detach($roleid);
+        if($user->roles()){
+
+            $user->roles()->detach($roleid);
+        }
         return redirect()->back()->with('success','Role deleted to user');
     }
 
@@ -115,8 +119,10 @@ class UserController extends Controller
      * @param  \App\Models\User  $user
      * @return \Illuminate\Http\Response
      */
-    public function destroy(User $user)
+    public function destroy($userid)
     {
-        //
+        $user=User::find($userid);
+        $user->delete();
+        return redirect()->back()->with('success','user is deleted');
     }
 }
