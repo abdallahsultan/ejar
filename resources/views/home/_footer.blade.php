@@ -75,8 +75,22 @@
     <div class="footer-bottom">
         <div class="container">
             <div class="row justify-content-between">
+              
                 <div class="col-sm-6">
-                    <p class="copy-right-text"><a href="{{route('home')}}">{{ $setting->company }}</a></p>
+                    <ul class="payment-method d-flex ">
+                    @auth
+                                
+                                <li><a href="{{ route('myprofile') }}">{{ Auth::user()->name }}  </a> | </li>
+                                <li><a href="{{ route('logout') }}"> تسجيل الخروج  </a> | </li>
+                            @endauth
+                            @guest
+                          
+                            <li><a href="/login"> تسجيل دخول  </a> | </li>
+                        <li> | <a href="/register">  إنشاء حساب  </a> </li>
+                            @endguest
+
+                      
+                    </ul>
                 </div>
                 <div class="col-sm-6">
                     <ul class="payment-method d-flex justify-content-end">
