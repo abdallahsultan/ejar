@@ -23,7 +23,7 @@
                                 <li><a href="{{$setting->twitter}}" target="_blank"><i class="fa fa-twitter"></i></a></li>
                                 <li><a href="{{$setting->instagram}}" target="_blank"><i class="fa fa-instagram"></i></a></li>
                                 <li><a href="{{$setting->youtube}}" target="_blank"><i class="fa fa-youtube"></i></a></li>
-                                <li><a href="https://play.google.com/store/apps/details?id=alphagroup.eyjar.com" target="_blank"><i class="fa fa-android" aria-hidden="true"></i></a></li>
+                                <!-- <li><a href="https://play.google.com/store/apps/details?id=alphagroup.eyjar.com" target="_blank"><i class="fa fa-android" aria-hidden="true"></i></a></li> -->
                             </ul>
                         </div>
                     </div>
