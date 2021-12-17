@@ -19,7 +19,7 @@ $setting = \App\Http\Controllers\HomeController::getSetting();
                             </li>
                      
                             <li><a href="{{ $setting->youtube }}" target="_blank"><i class="fa fa-youtube"></i></a></li>
-                            <li><a href="https://play.google.com/store/apps/details?id=alphagroup.eyjar.com" target="_blank"><i class="fa fa-android" aria-hidden="true"></i></a></li>
+                            <!-- <li><a href="https://play.google.com/store/apps/details?id=alphagroup.eyjar.com" target="_blank"><i class="fa fa-android" aria-hidden="true"></i></a></li> -->
                       
                         <!-- <li><a href="https://www.snagoff.com/" target="_blank"><i class="fa fa-snapchat"></i></a></li> -->
                     </ul>

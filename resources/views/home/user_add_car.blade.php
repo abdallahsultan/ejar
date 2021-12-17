@@ -31,7 +31,7 @@ $setting = \App\Http\Controllers\HomeController::getSetting();
 
                 <div class="card">
                     <div class="card-header border">
-                        <h3 class="card-title">أضافه سيارة</h3>
+                        <h3 class="card-title">إضافه سيارة</h3>
                     </div>
 
                     <div class="card-body border">

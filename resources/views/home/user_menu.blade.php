@@ -10,7 +10,7 @@
         <li><a href="{{route('myrents')}}">حجوزاتى</a></li>
         @endif
         @if(Auth::user()->level == 'office' || Auth::user()->level == 'renter')
-        <li><a href="{{route('addcar')}}">أضافه سيارة</a></li>
+        <li><a href="{{route('addcar')}}">إضافه سيارة</a></li>
         <li><a href="{{route('user_car_all')}}">جميع السيارات </a></li>
         <li><a href="{{route('requestrents')}}">طلبات الحجوزات </a></li>
         @endif
