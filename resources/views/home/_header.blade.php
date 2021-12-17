@@ -28,7 +28,7 @@ $setting = \App\Http\Controllers\HomeController::getSetting();
                     <ul class="header-info d-flex justify-content-center">
                         <li>
                             <i class="fa fa-map-marker"></i>
-                            <p>{{$setting->address}}</p>
+                            <p>المملكة العربية السعودية</p>
                         </li>
                         <li>
                             <i class="fa fa-clock-o"></i>
